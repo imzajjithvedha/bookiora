@@ -1,0 +1,9 @@
+{
+    "private": true,
+    "scripts": {
+        "watch": "node bs-server.js"
+    },
+    "devDependencies": {
+        "browser-sync": "^3.0.4"
+    }
+}

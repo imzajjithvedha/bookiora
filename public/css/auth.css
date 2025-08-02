@@ -1,0 +1,185 @@
+/* #region: Global */
+    .page-auth .title {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--color-bg-dark-alt);
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    .page-auth .description {
+        font-size: 16px;
+        color: var(--color-bg-dark-alt);
+        padding-bottom: 30px;
+        text-align: center;
+    }
+    .page-auth .label {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--color-bg-dark-alt);
+        margin-bottom: 10px!important;
+    }
+    .page-auth .input-field {
+        border: 1px solid var(--color-gray-light);
+        border-radius: 0;
+        height: 50px;
+        font-size: 14px;
+        color: var(--color-bg-dark-alt);
+    }
+    .submit-button {
+        background-color: var(--color-primary);
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--color-white);
+        margin-bottom: 30px;
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--color-primary-dark);
+            transition: all 0.3s;
+        }
+    }
+    .page-auth .toggle-password {
+        color: var(--color-gray);
+        cursor: pointer;
+        position: absolute;
+        top: 43px;
+        font-size: 20px;
+        right: 15px;
+    }
+    .page-auth .text {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--color-gray-dark);
+        text-align: center;
+    }
+    .page-auth .text .span-link {
+        color: var(--color-primary);
+    }
+/* #endregion */
+
+
+/* #region: Login */
+    .login .remember {
+        font-size: 14px;
+        color: var(--color-gray-dark);
+        cursor: pointer;
+    }
+    .login .checkbox {
+        border-radius: 0!important;
+        width: 13px;
+        height: 13px;
+        margin-right: 6px;
+        margin-top: 0px;
+    }
+    .login .forgot-password {
+        font-size: 14px;
+        color: var(--color-gray-dark);
+    }
+/* #endregion */
+
+
+/* #region: Register */
+    .register .radio-label {
+        font-size: 16px;
+        color: var(--color-bg-dark-alt);
+        cursor: pointer;
+    }
+    .register .radio {
+        border: 3px solid var(--color-primary-dark);
+        width: 25px;
+        height: 25px;
+        margin-right: 6px;
+        margin-top: 0px;
+        cursor: pointer;
+    }
+    .register .radio:checked {
+        background-color: var(--color-primary-dark);
+        border-color: var(--color-primary-dark);
+    }
+/* #endregion */
+
+
+/* #region: Responsive */
+    @media (width < 1921px) {}
+    @media (width < 1901px) {}
+    @media (width < 1851px) {}
+    @media (width < 1801px) {}
+    @media (width < 1751px) {}
+    @media (width < 1681px) {}
+    @media (width < 1601px) {}
+    @media (width < 1537px) {}
+    @media (width < 1441px) {}
+    @media (width < 1367px) {}
+    @media (width < 1301px) {}
+    @media (width < 1281px) {}
+    @media (width < 1151px) {}
+    @media (width < 1076px) {}
+    @media (width < 1025px) {}
+    @media (width < 992px) {}
+    @media (width < 845px) {}
+    @media (width < 768px) {
+        .page-auth .title {
+            font-size: 20px;
+        }
+        .page-auth .description {
+            font-size: 14px;
+            margin-bottom: 15px!important;
+        }
+        .page-auth .label {
+            font-size: 15px;
+            margin-bottom: 5px!important;
+        }
+        .page-auth .input-field {
+            height: 45px;
+        }
+        .page-auth .toggle-password {
+            top: 39px;
+            font-size: 18px;
+        }
+        .page-auth .submit-button {
+            margin-bottom: 10px;
+        }
+
+        .login .remember, .login .forgot-password {
+            font-size: 13px;
+        }
+
+        .register .radio {
+            width: 23px;
+            height: 23px;
+        }
+        .register .radio-label {
+            font-size: 15px;
+        }
+    }
+    @media (width < 721px) {}
+    @media (width < 576px) {}
+    @media (width < 481px) {}
+    @media (width < 429px) {
+        .page-auth .title {
+            margin-bottom: 3px!important;
+        }
+        .page-auth .label {
+            font-size: 14px;
+            margin-bottom: 2px!important;
+        }
+        .page-auth .toggle-password {
+            top: 35px;
+        }
+        .page-auth .text {
+            font-size: 13px;
+        }
+
+        .register .radio-label {
+            font-size: 14px;
+        }
+    }
+    @media (width < 415px) {}
+    @media (width < 396px) {}
+    @media (width < 377px) {}
+    @media (width < 361px) {}
+    @media (width < 331px) {}
+/* #endregion */

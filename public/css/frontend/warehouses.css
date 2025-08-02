@@ -1,0 +1,359 @@
+/* #region Section 2 */
+    .warehouses .section-2 {
+        background-color: var(--low_white);
+        border-radius: 16px;
+        padding: 30px 25px;
+    }
+    .warehouses .section-2 .top-row {
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    .warehouses .section-2 .top-row .title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 5px;
+    }
+    .warehouses .section-2 .top-row .description {
+        font-size: 15px;
+        color: var(--gray);
+    }
+    .warehouses .section-2 .top-row .right {
+        text-align: end;
+    }
+    .warehouses .section-2 .top-row .right .map-view-button {
+        font-style: 14px;
+        border-radius: 8px;
+        padding: 10px 20px;
+        border: 1px solid var(--input_border);
+        background-color: var(--medium_white);
+        color: var(--gray);
+        transition: all 0.3s;
+        &:hover{
+            border: none;
+            color: var(--white);
+            background-color: var(--light_black);
+            transition: all 0.3s
+        }
+    }
+    .warehouses .section-2 .top-row .right .map-view-button i {
+        margin-right: 6px;
+        font-size: 16px;
+    }
+    .warehouses .section-2 .bottom-row .input-field {
+        border: 1px solid var(--input_border);
+        border-radius: 30px;
+        color: var(--gray);
+        font-size: 14px;
+        background-color: var(--medium_white);
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .warehouses .section-2 .bottom-row .apply-filters-button {
+        border: none;
+        font-style: 14px;
+        border-radius: 30px;
+        width: 100%;
+        height: 50px;
+        background-color: var(--light_black);
+        color: var(--white);
+        transition: all 0.3s;
+        &:hover{
+            background-color: var(--red);
+            transition: all 0.3s
+        }
+    }
+    .map-modal .btn-close {
+        box-shadow: none;
+        font-size: 20px;
+    }
+    .map-modal #map {
+        height: 100%;
+    }
+    .map-modal .custom-info-window {
+        padding: 8px 12px;
+        border-radius: 0px!important;
+        background-color: white;
+        color: var(--red);
+    }
+    .map-modal .custom-info-window .info-title {
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    .map-modal .custom-info-window .info-subtitle {
+        font-size: 14px;
+        text-align: center;
+        color: var(--gray);
+    }
+    .map-modal .gm-ui-hover-effect {
+        display: none !important;
+    }
+/* #endregion */
+
+
+/* #region Section 3 */
+    .warehouses .section-3 .warehouse-row .left {
+        padding-left: 0;
+    }
+    .warehouses .section-3 .warehouse-row .right {
+        padding-right: 0;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse {
+        border: 1px solid var(--input_border);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 25px;
+        position: relative;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse:last-child {
+        margin-bottom: 0;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .badge {
+        position: absolute;
+        top: 28px;
+        left: 28px;
+        background-color: var(--red);
+        color: var(--white);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 2px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .type {
+        font-size: 14px;
+        color: var(--gray);
+        padding-bottom: 8px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .price {
+        color: var(--red);
+        font-size: 24px;
+        font-weight: 600;
+        padding-bottom: 2px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .price i {
+        position: relative;
+        font-size: 17px;
+        bottom: 10px;
+        left: 5px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .name {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 10px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .description {
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 22px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        max-height: calc(22px * 2);
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .location {
+        font-size: 14px;
+        color: var(--gray);
+        padding-top: 20px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .location i {
+        font-size: 16px;
+        padding-right: 5px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box {
+        background-color: var(--medium_white);
+        font-size: 14px;
+        color: var(--gray);
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action {
+        margin-left: 15px;
+        cursor: pointer;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action i {
+        margin-right: 5px;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action i.bi-heart-fill {
+        color: var(--red);
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu {
+        border: none;
+        font-size: 15px;
+        color: black;
+        left: -3%!important;
+        top: 2%!important;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        background-color: #f3f3f3;
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu .dropdown-item {
+        font-size: 13px;
+        color: var(--light_black);
+        padding: 10px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        &:hover {
+            background-color: #DC291E;
+            color: var(--white);
+            transition: all 0.3s;
+        };
+    }
+    .warehouses .section-3 .warehouse-row .single-warehouse .box .action .dropdown-menu i {
+        font-size: 16px;
+        padding-right: 8px;
+    }
+    .warehouses .section-3 .warehouse-row .no-data {
+        text-align: center;
+        font-size: 40px;
+        font-weight: 600;
+        color: var(--dark_red);
+    }
+    .warehouses .section-3 .sidebar {
+        background-color: var(--white);
+        border: 1px solid var(--input_border);
+        border-radius: 10px;
+        padding: 25px 20px;
+    }
+    .warehouses .section-3 .sidebar .divider {
+        border: 1px solid var(--input_border);
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+    .warehouses .section-3 .sidebar .heading {
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--light_black);
+        padding-bottom: 15px;
+    }
+    .warehouses .section-3 .sidebar .item {
+        font-size: 14px;
+        display: table;
+        color: var(--gray);
+        padding-bottom: 15px;
+    }
+    .warehouses .section-3 .sidebar .item:last-child {
+        padding-bottom: 0;
+    }
+    .warehouses .section-3 .pagination .active>.page-link, .warehouses .section-3 .pagination .page-link.active {
+        color: var(--white);
+        background-color: var(--red);
+        border-color: var(--red);
+    }
+    .warehouses .section-3 .pagination .page-link {
+        color: var(--light_black);
+    }
+    .warehouses .section-3 .pagination .page-item:first-child .page-link, .warehouses .section-3 .pagination .page-item:last-child .page-link {
+        border-radius: 0;
+    }
+    .warehouses .section-3 .pagination .page-link:focus {
+        box-shadow: none;
+    }
+    .warehouses .section-3 .pagination .page-link:hover {
+        color: var(--light_black);
+        background-color: var(--input_border);
+    }
+/* #endregion */
+
+
+/* #region Section 4 */
+    .warehouses .section-4 .section-title {
+        font-size: 25px;
+        font-weight: 500;
+        color: var(--light_black);
+        padding-bottom: 20px;
+    }
+    .warehouses .section-4 .single-warehouse {
+        border: 1px solid var(--input_border);
+        border-radius: 8px;
+    }
+    .warehouses .section-4 .single-warehouse .image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+    .warehouses .section-4 .single-warehouse .details {
+        padding: 20px 25px;
+    }
+    .warehouses .section-4 .single-warehouse .details .title {
+        font-size: 16px;
+        color: var(--light_black);
+        padding-bottom: 5px;
+    }
+    .warehouses .section-4 .single-warehouse .details .subtitle {
+        font-size: 14px;
+        color: var(--gray);
+        padding-bottom: 10px;
+    }
+    .warehouses .section-4 .single-warehouse .details .price {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--red);
+    }
+    .warehouses .section-4 .single-warehouse .details .price i {
+        position: relative;
+        font-size: 12px;
+        bottom: 10px;
+        left: 5px;
+    }
+/* #endregion */
+
+
+/* #region Modal */
+    .map-modal .image {
+        width: 100%;
+        height: 90vh;
+        object-fit: cover;
+    }
+/* #endregion */
+
+/* #region Responsive */
+    @media (width <= 1921px) {}
+    @media (width <= 1901px) {}
+    @media (width <= 1851px) {}
+    @media (width <= 1801px) {}
+    @media (width <= 1751px) {}
+    @media (width <= 1681px) {}
+    @media (width <= 1601px) {}
+    @media (width <= 1537px) {}
+    @media (width <= 1441px) {}
+    @media (width <= 1367px) {}
+    @media (width <= 1301px) {}
+    @media (width <= 1281px) {}
+    @media (width <= 1151px) {}
+    @media (width <= 1076px) {}
+    @media (width <= 1025px) {}
+    @media (width <= 991px) {}
+    @media (width <= 845px) {}
+    @media (width <= 768px) {}
+    @media (width <= 721px) {}
+    @media (width <= 651px) {}
+    @media (width <= 576px) {}
+    @media (width <= 481px) {}
+    @media (width <= 429px) {}
+    @media (width <= 415px) {}
+    @media (width <= 396px) {}
+    @media (width <= 377px) {}
+    @media (width <= 361px) {}
+    @media (width <= 331px) {}
+/* #endregion */
