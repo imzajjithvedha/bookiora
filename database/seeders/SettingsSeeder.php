@@ -12,7 +12,7 @@ class SettingsSeeder extends Seeder
         $records = [
             [
                 'id' => 1,
-                'name' => 'WFN',
+                'name' => 'Bookiora',
                 'logo' => 'logo.png',
                 'footer_logo' => 'footer-logo.png',
                 'favicon' => 'favicon.png',

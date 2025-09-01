@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="col-12">
-                <x-pagination pagination="{{ $pagination }}"></x-backend.pagination>
+                <x-pagination pagination="{{ $pagination }}"></x-pagination>
             
                 <div class="table-container">
                     <table class="table w-100">
@@ -82,8 +82,8 @@
             </div>
         </div>
 
-        <x-delete data="report"></x-backend.delete>
-        <x-notification></x-backend.notification>
+        <x-delete-data data="report"></x-delete>
+        <x-notification></x-notification>
     </div>
 @endsection
 

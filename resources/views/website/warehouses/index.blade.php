@@ -117,7 +117,7 @@
                                             @if($warehouse->thumbnail)
                                                 <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
                                             @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                                <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
                                             @endif
                                         </div>
 
@@ -246,7 +246,7 @@
                                     @if($warehouse->thumbnail)
                                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                        <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
                                     @endif
 
                                     <div class="details">

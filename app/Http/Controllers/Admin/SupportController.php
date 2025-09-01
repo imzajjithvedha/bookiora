@@ -21,12 +21,13 @@ class SupportController extends Controller
     public function index(Request $request)
     {
         $pagination = $request->pagination ?? 10;
-        $items = Support::orderBy('id', 'desc')->paginate($pagination);
-        $items = $this->processData($items);
 
         Support::where('is_new', 1)->update(['is_new' => 0]);
 
-        return view('backend.admin.supports.index', [
+        $items = Support::orderBy('id', 'desc')->paginate($pagination);
+        $items = $this->processData($items);
+
+        return view('admin.supports.index', [
             'items' => $items,
             'pagination' => $pagination
         ]);
@@ -67,16 +68,16 @@ class SupportController extends Controller
         $items = $this->processData($items);
 
         if($request->ajax()) {
-            $tbodyView = view('backend.admin.supports._tbody', compact('items'))->render();
-            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+            $body_view = view('admin.supports.tbody', compact('items'))->render();
+            $pagination_view = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
 
             return response()->json([
-                'tbody' => $tbodyView,
-                'pagination' => $paginationView,
+                'body_view' => $body_view,
+                'pagination_view' => $pagination_view,
             ]);
         }
 
-        return view('backend.admin.supports.index', [
+        return view('admin.supports.index', [
             'items' => $items,
             'pagination' => $pagination,
             'name' => $name

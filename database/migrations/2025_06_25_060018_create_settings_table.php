@@ -22,11 +22,6 @@ return new class extends Migration
             $table->string('no_image');
             $table->string('no_profile_image');
 
-            $table->string('fb_en')->nullable();
-            $table->string('instagram_en')->nullable();
-            $table->string('fb_ar')->nullable();
-            $table->string('instagram_ar')->nullable();
-
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <x-backend.input-error field="status"></x-backend.input-error>
+    <x-input-error field="status"></x-input-error>
 </div>
 
 <div class="col-12">

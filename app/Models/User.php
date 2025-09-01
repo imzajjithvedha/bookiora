@@ -27,11 +27,6 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function todos()
-    {
-        return $this->hasMany(Todo::class);
-    }
-
     public function reviews()
     {
         return $this->hasMany(WarehouseReview::class);

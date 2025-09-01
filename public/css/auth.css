@@ -112,9 +112,11 @@
     @media (width < 1601px) {}
     @media (width < 1537px) {}
     @media (width < 1441px) {}
+    @media (width < 1401px) {}
     @media (width < 1367px) {}
     @media (width < 1301px) {}
     @media (width < 1281px) {}
+    @media (width < 1201px) {}
     @media (width < 1151px) {}
     @media (width < 1076px) {}
     @media (width < 1025px) {}
@@ -122,11 +124,12 @@
     @media (width < 845px) {}
     @media (width < 768px) {
         .page-auth .title {
-            font-size: 20px;
+            font-size: 22px;
+            padding-bottom: 5px;
         }
         .page-auth .description {
-            font-size: 14px;
-            margin-bottom: 15px!important;
+            font-size: 15px;
+            padding-bottom: 15px!important;
         }
         .page-auth .label {
             font-size: 15px;
@@ -159,20 +162,19 @@
     @media (width < 576px) {}
     @media (width < 481px) {}
     @media (width < 429px) {
-        .page-auth .title {
-            margin-bottom: 3px!important;
-        }
         .page-auth .label {
             font-size: 14px;
-            margin-bottom: 2px!important;
         }
         .page-auth .toggle-password {
-            top: 35px;
+            top: 37px;
         }
         .page-auth .text {
             font-size: 13px;
         }
-
+        .submit-button {
+            padding: 10px 0;
+            font-size: 17px;
+        }
         .register .radio-label {
             font-size: 14px;
         }

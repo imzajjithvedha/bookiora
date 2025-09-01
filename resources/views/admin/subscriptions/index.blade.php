@@ -1,4 +1,4 @@
-@extends('backend.layouts.frontend')
+@extends('layouts.backend')
 
 @section('title', 'Subscriptions')
 
@@ -14,54 +14,62 @@
         <div class="row mb-4">
             <div class="col-12">
                 <form class="filter-form">
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-search"></i></span>
-                        <input type="text" class="form-control input-field" name="email" value="{{ $email ?? '' }}" placeholder="Search by Email">
-                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
+                        </div>
 
-                    <button type="button" class="form-control input-field reset">⟲ Reset Filters</button>
+                        <div class="col-5">
+                            <input type="text" class="form-control input-field raleway" name="email" value="{{ $email ?? '' }}" placeholder="Search by Email">
+                        </div>
+
+                        <div class="col-2">
+                            <button type="button" class="form-control input-field raleway reset">⟲ Reset</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <x-pagination pagination="{{ $pagination }}"></x-backend.pagination>
+                <x-pagination pagination="{{ $pagination }}"></x-pagination>
             
                 <div class="table-container">
                     <table class="table w-100">
                         <thead>
                             <tr>
-                                <th scope="col">EMAIL <i class="bi bi-arrows-vertical sort-icon" data-name="email" data-order="desc"></i></th>
-                                <th scope="col">ACTIONS</th>
+                                <th scope="col" class="raleway">NAME <i class="bi bi-arrows-vertical sort-icon" data-name="name" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">EMAIL <i class="bi bi-arrows-vertical sort-icon" data-name="email" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">ACTIONS</th>
                             </tr>
                         </thead>
 
-                        <tbody id="tbody">
+                        <tbody id="tBody">
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
+                                        <td>{{ $item->name ?? '-' }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="2" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="3" class="text-center">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>
                     </table>
                 </div>
 
-                <div id="pagination">
+                <div id="tPagination">
                     {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                 </div>
             </div>
         </div>
 
-        <x-delete data="subscription"></x-backend.delete>
-        <x-notification></x-backend.notification>
+        <x-delete-data data="subscription"></x-delete>
     </div>
 @endsection
 
@@ -76,5 +84,5 @@
         };
     </script>
 
-    <script src="{{ asset('backend/js/index-script.js') }}"></script>
+    <script src="{{ asset('js/index-script.js') }}"></script>
 @endpush

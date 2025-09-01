@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\User;
-use App\Models\Warehouse;
+use App\Models\Stay;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -95,13 +95,13 @@ class DashboardController extends Controller
         // Total partners
 
         // Total stays
-            $total_stays = Warehouse::count();
+            $total_stays = Stay::count();
 
-            $this_month_stays = Warehouse::whereMonth('created_at', $current_month)
+            $this_month_stays = Stay::whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
                 ->count();
 
-            $last_month_stays = Warehouse::whereMonth('created_at', $last_month)
+            $last_month_stays = Stay::whereMonth('created_at', $last_month)
                 ->whereYear('created_at', $last_month_year)
                 ->count();
 

@@ -53,7 +53,7 @@
                 <div class="col-4 mb-4">
                     <label class="form-label label">Gender</label>
                     <select class="form-select input-field" id="gender" name="gender">
-                        <option value="">Select a gender</option>
+                        <option value="">Select Gender</option>
                         <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
                         <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
                         <option value="nondisclosure" {{ old('gender') == 'nondisclosure' ? 'selected' : '' }}>Non Disclosure</option>
@@ -70,7 +70,7 @@
                 <div class="col-4 mb-4">
                     <label class="form-label label">Role<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="role" name="role" required>
-                        <option value="">Select a role</option>
+                        <option value="">Select Role</option>
                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                         <option value="partner" {{ old('role') == 'partner' ? 'selected' : '' }}>Partner</option>
                         <option value="customer" {{ old('role') == 'customer' ? 'selected' : '' }}>Customer</option>

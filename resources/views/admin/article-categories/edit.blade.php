@@ -16,7 +16,7 @@
                 <div class="col-12 mb-4">
                     <label for="name" class="form-label label">Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="name" name="name" placeholder="Name" value="{{ old('name', $article_category->name) }}" required>
-                    <x-input-error field="name"></x-backend.input-error>
+                    <x-input-error field="name"></x-input-error>
                 </div>
 
                 <div class="col-12 mb-4">
@@ -26,11 +26,11 @@
                         <option value="english" {{ old('language', $article_category->language) == 'english' ? "selected" : "" }}>English</option>
                         <option value="arabic" {{ old('language', $article_category->language) == 'arabic' ? "selected" : "" }}>Arabic</option>
                     </select>
-                    <x-input-error field="language"></x-backend.input-error>
+                    <x-input-error field="language"></x-input-error>
                 </div>
 
-                <x-edit :data="$article_category"></x-backend.edit>
-                <x-notification></x-backend.notification>
+                <x-edit-status :data="$article_category"></x-edit>
+                <x-notification></x-notification>
             </div>
         </form>
     </div>

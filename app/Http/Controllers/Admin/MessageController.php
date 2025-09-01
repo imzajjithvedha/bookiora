@@ -15,7 +15,7 @@ class MessageController extends Controller
     private function processData($items)
     {
         foreach($items as $item) {
-            $item->name = $item->user->first_name . ' ' . $item->user->last_name;
+            $item->name = $item->user->name;
 
             $time = Carbon::createFromFormat('H:i:s', $item->time);
             $item->time = $time->format('h:i A');
@@ -30,12 +30,12 @@ class MessageController extends Controller
 
         $all_count = Message::where('admin_status', 1)->get()->count();
         $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
         $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('admin_status', 0)->get()->count();
 
-        Message::where('admin_view', 0)->update(['admin_view' => 1]);
+        Message::where('admin_view', 1)->update(['admin_view' => 0]);
 
         if($category == 'all') {
             $items = Message::where('admin_status', 1)->orderBy('id', 'desc')->paginate($pagination);
@@ -43,11 +43,11 @@ class MessageController extends Controller
         elseif($category == 'general') {
             $items = Message::where('admin_status', 1)->where('category', 'general')->orderBy('id', 'desc')->paginate($pagination);
         }
-        elseif($category == 'landlord') {
-            $items = Message::where('admin_status', 1)->where('category', 'landlord')->orderBy('id', 'desc')->paginate($pagination);
+        elseif($category == 'partner') {
+            $items = Message::where('admin_status', 1)->where('category', 'partner')->orderBy('id', 'desc')->paginate($pagination);
         }
-        elseif($category == 'tenant') {
-            $items = Message::where('admin_status', 1)->where('category', 'tenant')->orderBy('id', 'desc')->paginate($pagination);
+        elseif($category == 'customer') {
+            $items = Message::where('admin_status', 1)->where('category', 'customer')->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'starred') {
             $items = Message::where('admin_status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
@@ -58,14 +58,14 @@ class MessageController extends Controller
         
         $items = $this->processData($items);
 
-        return view('backend.admin.messages.index', [
+        return view('admin.messages.index', [
             'items' => $items,
             'pagination' => $pagination,
             'category' => $category,
             'all_count' => $all_count,
             'general_count' => $general_count,
-            'landlord_count' => $landlord_count,
-            'tenant_count' => $tenant_count,
+            'partner_count' => $partner_count,
+            'customer_count' => $customer_count,
             'starred_count' => $starred_count,
             'bin_count' => $bin_count
         ]);
@@ -73,21 +73,21 @@ class MessageController extends Controller
 
     public function create()
     {
-        $users = User::where('status', 1)->whereNot('id', auth()->user()->id)->get();
+        $users = User::whereNot('id', auth()->user()->id)->get();
         
         $all_count = Message::where('admin_status', 1)->get()->count();
         $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
         $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('admin_status', 0)->get()->count();
 
-        return view('backend.admin.messages.create', [
+        return view('admin.messages.create', [
             'users' => $users,
             'all_count' => $all_count,
             'general_count' => $general_count,
-            'landlord_count' => $landlord_count,
-            'tenant_count' => $tenant_count,
+            'partner_count' => $partner_count,
+            'customer_count' => $customer_count,
             'starred_count' => $starred_count,
             'bin_count' => $bin_count
         ]);
@@ -97,8 +97,8 @@ class MessageController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'category' => 'required',
-            'subject' => 'required|min:0|max:255',
+            'category' => 'required|in:general,partner,customer',
+            'subject' => 'required|min:3|max:255',
             'initial_message' => 'required'
         ], [
             'initial_message' => 'The message field is required.'
@@ -107,7 +107,7 @@ class MessageController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Sending Failed!',
-                'route' => route('admin.messages.index', 'all')
+                'message' => 'We couldn\'t send the message.'
             ]);
         }
 
@@ -115,12 +115,12 @@ class MessageController extends Controller
         $data['creator'] = auth()->user()->id;
         $data['date'] = Carbon::now()->toDateString();
         $data['time'] = Carbon::now()->toTimeString();
-        $data['admin_view'] = 1;
-        $message = Message::create($data);  
+        $data['admin_view'] = 0;
+        $message = Message::create($data);
 
         return redirect()->route('admin.messages.index', 'all')->with([
-            'success' => "Send Successful!",
-            'route' => route('admin.messages.index', 'all')
+            'success' => "Sent Successful!",
+            'message' => 'Message sent successfully.'
         ]);
     }
 
@@ -128,15 +128,10 @@ class MessageController extends Controller
     {
         $all_count = Message::where('admin_status', 1)->get()->count();
         $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
         $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('admin_status', 0)->get()->count();
-
-        if($message->admin_view == 0) {
-            $message->admin_view = 1;
-            $message->save();
-        }
 
         $message_replies = MessageReply::where('message_id', $message->id)->where('status', 1)->get();
 
@@ -146,7 +141,7 @@ class MessageController extends Controller
         $message->time_difference = $time_ago;
 
         foreach($message_replies as $message_reply) {
-            $message_reply->admin_view = 1;
+            $message_reply->admin_view = 0;
             $message_reply->save();
 
             $date_time_string = $message_reply->date . ' ' . $message_reply->time;
@@ -155,14 +150,14 @@ class MessageController extends Controller
             $message_reply->time_difference = $time_ago;
         }
 
-        return view('backend.admin.messages.edit', [
+        return view('admin.messages.edit', [
             'message' => $message,
             'message_replies' => $message_replies,
             'user' => $message->user,
             'all_count' => $all_count,
             'general_count' => $general_count,
-            'landlord_count' => $landlord_count,
-            'tenant_count' => $tenant_count,
+            'partner_count' => $partner_count,
+            'customer_count' => $customer_count,
             'starred_count' => $starred_count,
             'bin_count' => $bin_count
         ]);
@@ -177,7 +172,7 @@ class MessageController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Sending Failed!',
-                'route' => route('admin.messages.index', 'all')
+                'message' => 'We couldn\'t send the message.'
             ]);
         }
 
@@ -187,8 +182,8 @@ class MessageController extends Controller
         $message_reply->message = $request->message;
         $message_reply->date = Carbon::now()->toDateString();
         $message_reply->time = Carbon::now()->toTimeString();
-        $message_reply->admin_view = 1;
-        $message_reply->user_view = 0;
+        $message_reply->admin_view = 0;
+        $message_reply->user_view = 1;
         $message_reply->save();
         
         return redirect()->back();
@@ -200,8 +195,8 @@ class MessageController extends Controller
 
         $all_count = Message::where('admin_status', 1)->get()->count();
         $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $landlord_count = Message::where('admin_status', 1)->where('category', 'landlord')->get()->count();
-        $tenant_count = Message::where('admin_status', 1)->where('category', 'tenant')->get()->count();
+        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
         $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
         $bin_count = Message::where('admin_status', 0)->get()->count();
 
@@ -211,11 +206,11 @@ class MessageController extends Controller
         elseif($category == 'general') {
             $items = Message::where('admin_status', 1)->where('category', 'general')->orderBy('id', 'desc');
         }
-        elseif($category == 'landlord') {
-            $items = Message::where('admin_status', 1)->where('category', 'landlord')->orderBy('id', 'desc');
+        elseif($category == 'partner') {
+            $items = Message::where('admin_status', 1)->where('category', 'partner')->orderBy('id', 'desc');
         }
-        elseif($category == 'tenant') {
-            $items = Message::where('admin_status', 1)->where('category', 'tenant')->orderBy('id', 'desc');
+        elseif($category == 'customer') {
+            $items = Message::where('admin_status', 1)->where('category', 'customer')->orderBy('id', 'desc');
         }
         elseif($category == 'starred') {
             $items = Message::where('admin_status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc');
@@ -232,15 +227,15 @@ class MessageController extends Controller
         $items = $items->paginate($pagination);
         $items = $this->processData($items);
 
-        return view('backend.admin.messages.index', [
+        return view('admin.messages.index', [
             'items' => $items,
             'pagination' => $pagination,
             'text' => $text,
             'category' => $category,
             'all_count' => $all_count,
             'general_count' => $general_count,
-            'landlord_count' => $landlord_count,
-            'tenant_count' => $tenant_count,
+            'partner_count' => $partner_count,
+            'customer_count' => $customer_count,
             'starred_count' => $starred_count,
             'bin_count' => $bin_count
         ]);
@@ -273,7 +268,7 @@ class MessageController extends Controller
             // $message->save();
 
             if($message->admin_status == 0) {
-                $message->admin_status = 2;
+                $message->admin_status = 1;
                 $message->save();
             }
             else {

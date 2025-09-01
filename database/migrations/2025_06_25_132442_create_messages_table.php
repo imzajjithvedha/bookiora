@@ -19,12 +19,14 @@ return new class extends Migration
             $table->text('initial_message');
             $table->date('date');
             $table->time('time');
-            $table->enum('category', ['general', 'landlord', 'tenant'])->nullable();
-            $table->integer('warehouse')->nullable();
+            $table->enum('category', ['general', 'partner', 'customer'])->nullable();
+            $table->integer('stay')->nullable();
+            $table->integer('surf_camp')->nullable();
+            $table->integer('vehicle_rental')->nullable();
             $table->boolean('admin_favorite')->default(0);
             $table->boolean('user_favorite')->default(0);
-            $table->boolean('admin_view')->default(0);
-            $table->boolean('user_view')->default(0);
+            $table->boolean('admin_view')->default(1);
+            $table->boolean('user_view')->default(1);
             $table->boolean('admin_status')->default(1);
             $table->boolean('user_status')->default(1);
             $table->boolean('status')->default(1);

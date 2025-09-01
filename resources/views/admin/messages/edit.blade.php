@@ -1,11 +1,11 @@
-@extends('backend.layouts.frontend')
+@extends('layouts.backend')
 
 @section('title', 'Edit a Message')
 
 @section('content')
     <div class="inner-page">
-        <div class="page-details">
-            <p class="title">Message Details</p>
+        <div class="page-details mb-4">
+            <p class="title raleway">Message Details</p>
             <p class="description">View or send messages.</p>
         </div>
 
@@ -14,8 +14,8 @@
                 <x-admin-message-sidebar
                     :all_count="$all_count" 
                     :general_count="$general_count" 
-                    :landlord_count="$landlord_count" 
-                    :tenant_count="$tenant_count" 
+                    :partner_count="$partner_count" 
+                    :customer_count="$customer_count" 
                     :starred_count="$starred_count" 
                     :bin_count="$bin_count"
                 />
@@ -38,7 +38,7 @@
                                             @if(App\Models\User::find($message->creator)->image)
                                                 <img src="{{ asset('storage/backend/users/' . App\Models\User::find($message->creator)->image) }}" class="profile-image" alt="Profile Image">
                                             @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
+                                                <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
                                             @endif
                                         </div>
                                     @else
@@ -46,7 +46,7 @@
                                             @if($user->image)
                                                 <img src="{{ asset('storage/backend/users/' . $user->image) }}" class="profile-image" alt="Profile Image">
                                             @else
-                                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
+                                                <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
                                             @endif
 
                                             <div>
@@ -62,7 +62,7 @@
                                                 @if($user->image)
                                                     <img src="{{ asset('storage/backend/users/' . $user->image) }}" class="profile-image" alt="Profile Image">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
+                                                    <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
                                                 @endif
                                                 
                                                 <div>
@@ -80,7 +80,7 @@
                                                 @if(App\Models\User::find($message_reply->replier)->image)
                                                     <img src="{{ asset('storage/backend/users/' . App\Models\User::find($message_reply->replier)->image) }}" class="profile-image" alt="Profile Image">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
+                                                    <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_profile_image) }}" class="profile-image" alt="Profile Image">
                                                 @endif
                                             </div>
                                         @endif
@@ -91,7 +91,7 @@
                             <div class="col-12 mb-5">
                                 <label for="message" class="form-label label">Message<span class="asterisk">*</span></label>
                                 <textarea class="form-control input-field textarea" rows="5" id="message" name="message" placeholder="Message" value="{{ old('message') }}" required>{{ old('message') }}</textarea>
-                                <x-input-error field="message"></x-backend.input-error>
+                                <x-input-error field="message"></x-input-error>
                             </div>
 
                             <div class="col-12">
@@ -99,8 +99,6 @@
                             </div>
                         </div>
                     </form>
-
-                    <x-notification></x-backend.notification>
                 </div>
             </div>
         </div>

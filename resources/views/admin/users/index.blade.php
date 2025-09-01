@@ -37,6 +37,7 @@
                                 <option value="customer" {{ isset($role) && $role == 'customer' ? "selected" : "" }}>Customer</option>
                             </select>
                         </div>
+
                         <div class="col-2">
                             <select class="form-select input-field raleway" name="status">
                                 <option value="">Status</option>
@@ -45,6 +46,7 @@
                                 <option value="0" {{ isset($status) && $status == 0 ? "selected" : "" }}>Inactive</option>
                             </select>
                         </div>
+                        
                         <div class="col-2">
                             <button type="button" class="form-control input-field raleway reset">⟲ Reset</button>
                         </div>

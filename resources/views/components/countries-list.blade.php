@@ -4,7 +4,7 @@
     $country = old($data) ?? ($data ?? '');
 @endphp
 
-<option value="">Select a country</option>
+<option value="">Select Country</option>
 <option value="Afghanistan" {{ $country == 'Afghanistan' ? 'selected' : '' }}>Afghanistan</option>
 <option value="Albania" {{ $country == 'Albania' ? 'selected' : '' }}>Albania</option>
 <option value="Algeria" {{ $country == 'Algeria' ? 'selected' : '' }}>Algeria</option>

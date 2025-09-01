@@ -39,7 +39,7 @@
             @if($article->thumbnail)
                 <img src="{{ asset('storage/backend/articles/' . $article->thumbnail) }}" alt="article-image" class="thumbnail-image">
             @else
-                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="thumbnail-image">
+                <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="thumbnail-image">
             @endif
 
             <div class="section-description">{!! $article->content !!}</div>
@@ -55,7 +55,7 @@
                             @if($related_article->thumbnail)
                                 <img src="{{ asset('storage/backend/articles/' . $related_article->thumbnail) }}" alt="article-image" class="image">
                             @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
+                                <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="article-image" class="image">
                             @endif
 
                             <p class="date">{{ \Carbon\Carbon::parse($related_article->created_at)->format('F d, Y') }}</p>

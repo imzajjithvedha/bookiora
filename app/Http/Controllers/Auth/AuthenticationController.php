@@ -26,7 +26,7 @@ class AuthenticationController extends Controller
         }
         
         $credentials = $request->only('email', 'password');
-        $credentials['status'] = 1;
+        $credentials['status'] = 2;
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();

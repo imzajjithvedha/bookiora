@@ -1,5 +1,5 @@
 <div class="container-fluid footer">
-    <div class="container">
+    <div class="container-md">
         <div class="top">
             <p class="text">Need a Help?</p>
             <p class="text">Let's match you with the ideal deal!</p>
@@ -7,7 +7,7 @@
 
         <div class="bottom">
             <div class="row">
-                <div class="col-3">
+                <div class="col-6 col-lg-3 mb-3 mb-lg-0">
                     <p class="title">About</p>
                     <ul>
                         <li>
@@ -20,7 +20,7 @@
                     </ul>
                 </div>
 
-                <div class="col-3">
+                <div class="col-6 col-lg-3 mb-3 mb-lg-0">
                     <p class="title">Discover</p>
                     <ul>
                         <li>
@@ -33,7 +33,7 @@
                     </ul>
                 </div>
 
-                <div class="col-3">
+                <div class="col-6 col-lg-3">
                     <p class="title">Support</p>
                     <ul>
                         <li>
@@ -46,7 +46,7 @@
                     </ul>
                 </div>
 
-                <div class="col-3">
+                <div class="col-6 col-lg-3">
                     <p class="title">Terms and Policy</p>
                     <ul>
                         <li>
@@ -67,11 +67,11 @@
 
         <div class="copyright">
             <div class="row align-items-center">
-                <div class="col-6">
+                <div class="d-none d-sm-block col-sm-3 col-md-6">
                     <img src="{{ asset('storage/global/logo.png') }}" alt="Logo" class="logo">
                 </div>
 
-                <div class="col-6 text-end">
+                <div class="col-12 col-sm-9 col-md-6 text-center text-sm-end">
                     <p class="text">&#169; Bookiora. All rights reserved</p>
                 </div>
             </div>

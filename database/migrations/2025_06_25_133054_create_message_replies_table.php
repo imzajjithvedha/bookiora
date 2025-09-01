@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('message');
             $table->date('date');
             $table->time('time');
-            $table->boolean('admin_view')->default(0);
-            $table->boolean('user_view')->default(0);
+            $table->boolean('admin_view')->default(1);
+            $table->boolean('user_view')->default(1);
             $table->boolean('status')->default(1);
 
             $table->foreignId('message_id')->constrained()->onDelete('cascade');

@@ -16,7 +16,7 @@
                 <div class="col-12 mb-4">
                     <label for="title" class="form-label label">Title<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="title" name="title" value="{{ old('title') }}" placeholder="Title" required>
-                    <x-input-error field="title"></x-backend.input-error>
+                    <x-input-error field="title"></x-input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -32,22 +32,22 @@
                 <div class="col-6 mb-4">
                     <label for="author_name" class="form-label label">Author Name<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field" id="author_name" name="author_name" value="{{ old('author_name') }}" placeholder="Author Name" required>
-                    <x-input-error field="author_name"></x-backend.input-error>
+                    <x-input-error field="author_name"></x-input-error>
                 </div>
 
                 <div class="col-12 mb-4">
                     <label for="content" class="form-label">Content<span class="asterisk">*</span></label>
                     <textarea class="editor" id="content" name="content" value="{{ old('content') }}">{{ old('content') }}</textarea>
-                    <x-input-error field="content"></x-backend.input-error>
+                    <x-input-error field="content"></x-input-error>
                 </div>
 
                 <div class="col-12 mb-4">
-                    <x-upload-image old_name="old_thumbnail" old_value="{{ old('thumbnail') }}" new_name="new_thumbnail" path="articles" label="Thumbnail"></x-backend.upload-image>
-                    <x-input-error field="new_thumbnail"></x-backend.input-error>
+                    <x-upload-image old_name="old_thumbnail" old_value="{{ old('thumbnail') }}" new_name="new_thumbnail" path="articles" label="Thumbnail"></x-upload-image>
+                    <x-input-error field="new_thumbnail"></x-input-error>
                 </div>
 
-                <x-create></x-backend.create>
-                <x-notification></x-backend.notification>
+                <x-create-status></x-create>
+                <x-notification></x-notification>
             </div>
         </form>
     </div>

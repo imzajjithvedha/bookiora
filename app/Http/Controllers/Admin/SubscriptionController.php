@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
@@ -21,12 +21,13 @@ class SubscriptionController extends Controller
     public function index(Request $request)
     {
         $pagination = $request->pagination ?? 10;
-        $items = Subscription::orderBy('id', 'desc')->paginate($pagination);
-        $items = $this->processData($items);
 
         Subscription::where('is_new', 1)->update(['is_new' => 0]);
 
-        return view('backend.admin.subscriptions.index', [
+        $items = Subscription::orderBy('id', 'desc')->paginate($pagination);
+        $items = $this->processData($items);
+
+        return view('admin.subscriptions.index', [
             'items' => $items,
             'pagination' => $pagination
         ]);
@@ -41,11 +42,12 @@ class SubscriptionController extends Controller
 
     public function filter(Request $request)
     {
+        $name = $request->name;
         $email = $request->email;
         $column = $request->column ?? 'id';
         $direction = $request->direction ?? 'desc';
 
-        $valid_columns = ['email', 'id'];
+        $valid_columns = ['name', 'email', 'id'];
         $valid_directions = ['asc', 'desc'];
 
         if(!in_array($column, $valid_columns)) {
@@ -58,6 +60,10 @@ class SubscriptionController extends Controller
 
         $items = Subscription::orderBy($column, $direction);
 
+        if($name) {
+            $items->where('name', 'like', '%' . $name . '%');
+        }
+
         if($email) {
             $items->where('email', 'like', '%' . $email . '%');
         }
@@ -67,18 +73,19 @@ class SubscriptionController extends Controller
         $items = $this->processData($items);
 
         if($request->ajax()) {
-            $tbodyView = view('backend.admin.subscriptions._tbody', compact('items'))->render();
-            $paginationView = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
+            $body_view = view('admin.subscriptions.tbody', compact('items'))->render();
+            $pagination_view = $items->appends($request->except('page'))->links("pagination::bootstrap-5")->render();
 
             return response()->json([
-                'tbody' => $tbodyView,
-                'pagination' => $paginationView,
+                'body_view' => $body_view,
+                'pagination_view' => $pagination_view,
             ]);
         }
 
-        return view('backend.admin.subscriptions.index', [
+        return view('admin.subscriptions.index', [
             'items' => $items,
             'pagination' => $pagination,
+            'name' => $name,
             'email' => $email
         ]);
     }

@@ -29,17 +29,6 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
         });
     // Favorite routes
 
-    // Todos routes
-        Route::controller(TenantTodoController::class)->prefix('todos')->name('todos.')->group(function() {
-            Route::get('/', 'index')->name('index');
-            Route::get('create', 'create')->name('create');
-            Route::post('/', 'store')->name('store');
-            Route::post('{todo}/favorite', 'favorite')->name('favorite');
-            Route::post('{todo}/complete', 'complete')->name('complete');
-            Route::post('{todo}/destroy', 'destroy')->name('destroy');
-        });
-    // Todos routes
-
     // Settings routes
         Route::controller(TenantSettingsController::class)->prefix('settings')->name('settings.')->group(function() {
             Route::get('/', 'index')->name('index');

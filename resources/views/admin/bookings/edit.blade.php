@@ -21,7 +21,7 @@
                             <option value="{{ $user->id }}" {{ old('user_id', $booking->user_id) == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
                         @endforeach
                     </select>
-                    <x-input-error field="user_id"></x-backend.input-error>
+                    <x-input-error field="user_id"></x-input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -32,45 +32,45 @@
                             <option value="{{ $warehouse->id }}" {{ old('warehouse_id', $booking->warehouse_id) == $warehouse->id ? 'selected' : '' }}>{{ $warehouse->name_en }}</option>
                         @endforeach
                     </select>
-                    <x-input-error field="warehouse_id"></x-backend.input-error>
+                    <x-input-error field="warehouse_id"></x-input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="no_of_pallets" class="form-label label">No of Pallets<span class="asterisk">*</span></label>
                     <input type="number" class="form-control input-field" id="no_of_pallets" name="no_of_pallets" placeholder="No of Pallets" value="{{ old('no_of_pallets', $booking->no_of_pallets) }}" required>
-                    <x-input-error field="no_of_pallets"></x-backend.input-error>
+                    <x-input-error field="no_of_pallets"></x-input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="total_rent" class="form-label label">Total Rent<span class="asterisk">*</span></label>
                     <input type="number" class="form-control input-field" id="total_rent" name="total_rent" placeholder="Total Rent" value="{{ old('total_rent', $booking->total_rent) }}" required>
-                    <x-input-error field="total_rent"></x-backend.input-error>
+                    <x-input-error field="total_rent"></x-input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="tenancy_date" class="form-label label">Tenancy Date<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field date-picker-field" id="tenancy_date" name="tenancy_date" placeholder="Tenancy Date" value="{{ old('tenancy_date', $booking->tenancy_date) }}" required>
-                    <x-input-error field="tenancy_date"></x-backend.input-error>
+                    <x-input-error field="tenancy_date"></x-input-error>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="renewal_date" class="form-label label">Renewal Date<span class="asterisk">*</span></label>
                     <input type="text" class="form-control input-field date-picker-field" id="renewal_date" name="renewal_date" placeholder="Renewal Date" value="{{ old('renewal_date', $booking->renewal_date) }}" required>
-                    <x-input-error field="renewal_date"></x-backend.input-error>
+                    <x-input-error field="renewal_date"></x-input-error>
                 </div>
 
                 <div class="col-12 mb-4">
-                    <x-upload-multi-images image_count="4" old_name="old_documents" old_value="{{ $booking->documents ?? old('documents') }}" new_name="new_documents[]" path="bookings"  label="Document"></x-backend.upload-multi-images>
-                    <x-input-error field="new_documents.*"></x-backend.input-error>
+                    <x-upload-multi-images image_count="4" old_name="old_documents" old_value="{{ $booking->documents ?? old('documents') }}" new_name="new_documents[]" path="bookings"  label="Document"></x-upload-multi-images>
+                    <x-input-error field="new_documents.*"></x-input-error>
                 </div>
 
-                <x-edit :data="$booking"></x-backend.edit>
-                <x-notification></x-backend.notification>
+                <x-edit-status :data="$booking"></x-edit>
+                <x-notification></x-notification>
             </div>
         </form>
     </div>
 
-    <x-modal-image-preview></x-backend.modal-image-preview>
+    <x-upload-image-preview></x-modal-image-preview>
 @endsection
 
 @push('after-scripts')

@@ -44,18 +44,18 @@
                         <div class="col-12 mb-3 mb-lg-4">
                             <label for="email" class="form-label label">Email<span class="asterisk">*</span></label>
                             <input type="email" class="form-control input-field" id="email" name="email" placeholder="Email" value="{{ old('email', $user->email) }}" required>
-                            <x-input-error field="email"></x-backend.input-error>
+                            <x-input-error field="email"></x-input-error>
                         </div>
 
                         <div class="col-12">
-                            <x-upload-image old_name="old_image" old_value="{{ $user->image ?? old('image') }}" new_name="new_image" path="users" label="Profile"></x-backend.upload-image>
-                            <x-input-error field="new_image"></x-backend.input-error>
+                            <x-upload-image old_name="old_image" old_value="{{ $user->image ?? old('image') }}" new_name="new_image" path="users" label="Profile"></x-upload-image>
+                            <x-input-error field="new_image"></x-input-error>
                         </div>
                     </div>
 
                     <button type="submit" class="submit-button">Save Changes</button>
 
-                    <x-notification></x-backend.notification>
+                    <x-notification></x-notification>
                 </form>
             </div>
 
@@ -72,33 +72,33 @@
                         </div>
 
                         <div class="col-6 mb-4">
-                            <x-upload-image-must old_name="old_logo" old_value="{{ $items->logo ?? '' }}" new_name="new_logo" label="Logo" path="global"></x-backend.upload-image-must>
-                            <x-input-error field="new_logo"></x-backend.input-error>
+                            <x-upload-image-must old_name="old_logo" old_value="{{ $items->logo ?? '' }}" new_name="new_logo" label="Logo" path="global"></x-upload-image-must>
+                            <x-input-error field="new_logo"></x-input-error>
                         </div>
 
                         <div class="col-6 mb-4">
-                            <x-upload-image-must old_name="old_favicon" old_value="{{ $items->favicon ?? '' }}" new_name="new_favicon" label="Favicon" path="global"></x-backend.upload-image-must>
-                            <x-input-error field="new_favicon"></x-backend.input-error>
+                            <x-upload-image-must old_name="old_favicon" old_value="{{ $items->favicon ?? '' }}" new_name="new_favicon" label="Favicon" path="global"></x-upload-image-must>
+                            <x-input-error field="new_favicon"></x-input-error>
                         </div>
 
                         <div class="col-6 mb-4">
-                            <x-upload-image-must old_name="old_guest_image" old_value="{{ $items->guest_image ?? '' }}" new_name="new_guest_image" label="Guest" path="global"></x-backend.upload-image-must>
-                            <x-input-error field="new_guest_image"></x-backend.input-error>
+                            <x-upload-image-must old_name="old_guest_image" old_value="{{ $items->guest_image ?? '' }}" new_name="new_guest_image" label="Guest" path="global"></x-upload-image-must>
+                            <x-input-error field="new_guest_image"></x-input-error>
                         </div>
 
                         <div class="col-6 mb-4">
-                            <x-upload-image-must old_name="old_footer_logo" old_value="{{ $items->footer_logo ?? '' }}" new_name="new_footer_logo" label="Footer Logo" path="global"></x-backend.upload-image-must>
-                            <x-input-error field="new_footer_logo"></x-backend.input-error>
+                            <x-upload-image-must old_name="old_footer_logo" old_value="{{ $items->footer_logo ?? '' }}" new_name="new_footer_logo" label="Footer Logo" path="global"></x-upload-image-must>
+                            <x-input-error field="new_footer_logo"></x-input-error>
                         </div>
 
                         <div class="col-6 mb-4">
-                            <x-upload-image-must old_name="old_no_image" old_value="{{ $items->no_image ?? '' }}" new_name="new_no_image" label="No" path="global"></x-backend.upload-image-must>
-                            <x-input-error field="new_no_image"></x-backend.input-error>
+                            <x-upload-image-must old_name="old_no_image" old_value="{{ $items->no_image ?? '' }}" new_name="new_no_image" label="No" path="global"></x-upload-image-must>
+                            <x-input-error field="new_no_image"></x-input-error>
                         </div>
 
                         <div class="col-6 mb-4">
-                            <x-upload-image-must old_name="old_no_profile_image" old_value="{{ $items->no_profile_image ?? '' }}" new_name="new_no_profile_image" label="No Profile" path="global"></x-backend.upload-image-must>
-                            <x-input-error field="new_no_profile_image"></x-backend.input-error>
+                            <x-upload-image-must old_name="old_no_profile_image" old_value="{{ $items->no_profile_image ?? '' }}" new_name="new_no_profile_image" label="No Profile" path="global"></x-upload-image-must>
+                            <x-input-error field="new_no_profile_image"></x-input-error>
                         </div>
 
                         <div class="col-6 mb-4">
@@ -124,7 +124,7 @@
 
                     <button type="submit" class="submit-button">Save Changes</button>
 
-                    <x-notification></x-backend.notification>
+                    <x-notification></x-notification>
                 </form>
             </div>
 
@@ -139,33 +139,33 @@
                             <label for="old_password" class="form-label label">Old Password<span class="asterisk">*</span></label>
                             <input type="password" class="form-control input-field" id="old_password" name="old_password" placeholder="* * * * * * * *" required>
                             <span class="bi bi-eye-slash-fill toggle-password"></span>
-                            <x-input-error field="old_password"></x-backend.input-error>
+                            <x-input-error field="old_password"></x-input-error>
                         </div>
 
                         <div class="col-12 mb-4 position-relative">
                             <label for="password" class="form-label label">Password<span class="asterisk">*</span></label>
                             <input type="password" class="form-control input-field" id="password" name="password" placeholder="* * * * * * * *" required>
                             <span class="bi bi-eye-slash-fill toggle-password"></span>
-                            <x-input-error field="password"></x-backend.input-error>
+                            <x-input-error field="password"></x-input-error>
                         </div>
 
                         <div class="col-12 position-relative">
                             <label for="confirm_password" class="form-label label">Confirm Password<span class="asterisk">*</span></label>
                             <input type="password" class="form-control input-field" id="confirm_password" name="confirm_password" placeholder="* * * * * * * *" required>
                             <span class="bi bi-eye-slash-fill toggle-password"></span>
-                            <x-input-error field="confirm_password"></x-backend.input-error>
+                            <x-input-error field="confirm_password"></x-input-error>
                         </div>
                     </div>
 
                     <button type="submit" class="submit-button">Save Changes</button>
 
-                    <x-notification></x-backend.notification>
+                    <x-notification></x-notification>
                 </form>
             </div>
         </div>
     </div>
 
-    <x-modal-image-preview></x-backend.modal-image-preview>
+    <x-upload-image-preview></x-modal-image-preview>
 @endsection
 
 @push('after-scripts')

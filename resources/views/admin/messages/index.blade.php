@@ -1,12 +1,12 @@
-@extends('backend.layouts.frontend')
+@extends('layouts.backend')
 
-@section('title', 'My Inbox')
+@section('title', 'Messages')
 
 @section('content')
     <div class="page">
         <div class="row align-items-center mb-4">
             <div class="col-8">
-                <p class="title">My Inbox</p>
+                <p class="title raleway">Messages</p>
                 <p class="description">Manage message and inquiries.</p>
             </div>
             <div class="col-4 text-end">
@@ -22,8 +22,8 @@
                 <x-admin-message-sidebar
                     :all_count="$all_count" 
                     :general_count="$general_count" 
-                    :landlord_count="$landlord_count" 
-                    :tenant_count="$tenant_count" 
+                    :partner_count="$partner_count" 
+                    :customer_count="$customer_count" 
                     :starred_count="$starred_count" 
                     :bin_count="$bin_count"
                 />
@@ -59,10 +59,10 @@
 
                                     @if($item->category == 'general')
                                         <p class="category general">General Inquiry</p>
-                                    @elseif($item->category == 'landlord')
-                                        <p class="category landlord">Landlord Inquiry</p>
+                                    @elseif($item->category == 'partner')
+                                        <p class="category partner">Partner Inquiry</p>
                                     @else
-                                        <p class="category tenant">Tenant Inquiry</p>
+                                        <p class="category customer">Customer Inquiry</p>
                                     @endif
 
                                     <a href="{{ route('admin.messages.edit', $item->id) }}">
@@ -89,8 +89,6 @@
                 </div>
             </div>
         </div>
-
-        <x-notification></x-backend.notification>
     </div>
 @endsection
 

@@ -28,7 +28,7 @@ class ForgotPasswordController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $user = User::where('email', $request->email)->where('status', 1)->first();
+        $user = User::where('email', $request->email)->where('status', 2)->first();
 
         if(!$user) {
             return redirect()->back()->withErrors(['email' => 'Email not found.'])->withInput();

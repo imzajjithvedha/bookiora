@@ -1,12 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\Article\ArticleController;
-use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Website\AboutUsController;
 use App\Http\Controllers\Website\HomeController;
-use App\Http\Controllers\Website\PrivacyPolicyController;
-use App\Http\Controllers\Website\TermsAndConditionController;
-use App\Http\Controllers\Website\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
 

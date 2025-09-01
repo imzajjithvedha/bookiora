@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('is_new')->default(1);
             $table->boolean('status')->default(1);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('warehouse_id')->constrained()->onDelete('cascade');
+            $table->foreignId('stay_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

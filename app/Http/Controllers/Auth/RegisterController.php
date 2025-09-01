@@ -36,7 +36,6 @@ class RegisterController extends Controller
 
         $data = $request->except('password_confirmation');
         $data['password'] = Hash::make($request->password);
-        $data['status'] = 1;
         $user = User::create($data);
 
         $mail = [

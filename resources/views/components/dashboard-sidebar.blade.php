@@ -27,12 +27,12 @@
             </li>
 
             <li class="link">
-                <a href="{{ route('admin.warehouses.index') }}" class="{{ Request::segment(2) == 'warehouses' ? 'active' : '' }}">
+                <a href="{{ route('admin.stays.index') }}" class="{{ Request::segment(2) == 'stays' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
                         <i class="bi bi-houses"></i>
-                        Warehouses
-                        <p class="new-count">{{ App\Models\Warehouse::where('is_new', 1)->count() != 0 ? App\Models\Warehouse::where('is_new', 1)->count() : ''; }}</p>
+                        Stays
+                        <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -48,26 +48,16 @@
                 </a>
             </li>
 
-            <!-- <li class="link">
-                <a href="#">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-paperclip"></i>
-                        Documents
-                    </div>
-                </a>
-            </li> -->
-
             <li class="link">
                 <a href="{{ route('admin.messages.index', 'all') }}" class="{{ Request::segment(2) == 'messages' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
                         <i class="bi bi-chat-dots"></i>
-                        Inbox
+                        Messages
 
                         @php
-                            $messages = App\Models\Message::where('admin_view', 0)->get();
-                            $message_replies = App\Models\MessageReply::where('admin_view', 0)->get();
+                            $messages = App\Models\Message::where('admin_view', 1)->get();
+                            $message_replies = App\Models\MessageReply::where('admin_view', 1)->get();
 
                             $message_ids = $messages->pluck('id')->toArray();
 
@@ -114,30 +104,6 @@
                         <i class="bi bi-flag"></i>
                         Reports
                         <p class="new-count">{{ App\Models\Report::where('is_new', 1)->count() != 0 ? App\Models\Report::where('is_new', 1)->count() : ''; }}</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
-
-        <hr>
-
-        <ul class="main-menu">
-            <li class="link">
-                <a href="{{ route('admin.todos.index') }}" class="{{ Request::segment(2) == 'todos' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-list-check"></i>
-                        To-Do
-                    </div>
-                </a>
-            </li>
-
-            <li class="link">
-                <a href="{{ route('admin.storage-types.index') }}" class="{{ Request::segment(2) == 'storage-types' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-house-gear"></i>
-                        Storage Types
                     </div>
                 </a>
             </li>
@@ -226,7 +192,7 @@
                     <div class="box"></div>
                     <div class="actual-link">
                         <i class="bi bi-houses"></i>
-                        Warehouses
+                        Stays
                     </div>
                 </a>
             </li>
@@ -246,16 +212,16 @@
                     <div class="box"></div>
                     <div class="actual-link">
                         <i class="bi bi-chat-dots"></i>
-                        Inbox
+                        Messages
 
                         @php
                             $messages = App\Models\Message::where('user_id', auth()->user()->id)->get();
                             $message_ids = $messages->pluck('id')->toArray();
 
-                            $unseen_messages = $messages->where('user_view', 0);
+                            $unseen_messages = $messages->where('user_view', 1);
                             $unseen_message_ids = $unseen_messages->pluck('id')->toArray();
 
-                            $message_replies = App\Models\MessageReply::whereIn('message_id', $message_ids)->where('user_view', 0)->get();
+                            $message_replies = App\Models\MessageReply::whereIn('message_id', $message_ids)->where('user_view', 1)->get();
 
                             $filtered_replies = $message_replies->reject(function ($reply) use ($unseen_message_ids) {
                                 return in_array($reply->message_id, $unseen_message_ids);
@@ -267,30 +233,6 @@
                         @endphp
 
                         <p class="new-count">{{ $total_new_messages != 0 ? $total_new_messages : ''; }}</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
-
-        <hr>
-
-        <ul class="main-menu">
-            <li class="link">
-                <a href="{{ route('landlord.todos.index') }}" class="{{ Request::segment(2) == 'todos' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-list-check"></i>
-                        To-Do
-                    </div>
-                </a>
-            </li>
-
-            <li class="link">
-                <a href="{{ route('landlord.favorites.index') }}" class="{{ Request::segment(2) == 'favorites' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-heart"></i>
-                        Favorites
                     </div>
                 </a>
             </li>
@@ -355,16 +297,16 @@
                     <div class="box"></div>
                     <div class="actual-link">
                         <i class="bi bi-chat-dots"></i>
-                        Inbox
+                        Messages
 
                         @php
                             $messages = App\Models\Message::where('user_id', auth()->user()->id)->get();
                             $message_ids = $messages->pluck('id')->toArray();
 
-                            $unseen_messages = $messages->where('user_view', 0);
+                            $unseen_messages = $messages->where('user_view', 1);
                             $unseen_message_ids = $unseen_messages->pluck('id')->toArray();
 
-                            $message_replies = App\Models\MessageReply::whereIn('message_id', $message_ids)->where('user_view', 0)->get();
+                            $message_replies = App\Models\MessageReply::whereIn('message_id', $message_ids)->where('user_view', 1)->get();
 
                             $filtered_replies = $message_replies->reject(function ($reply) use ($unseen_message_ids) {
                                 return in_array($reply->message_id, $unseen_message_ids);
@@ -376,30 +318,6 @@
                         @endphp
 
                         <p class="new-count">{{ $total_new_messages != 0 ? $total_new_messages : ''; }}</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
-
-        <hr>
-
-        <ul class="main-menu">
-            <li class="link">
-                <a href="{{ route('tenant.todos.index') }}" class="{{ Request::segment(2) == 'todos' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-list-check"></i>
-                        To-Do
-                    </div>
-                </a>
-            </li>
-
-            <li class="link">
-                <a href="{{ route('tenant.favorites.index') }}" class="{{ Request::segment(2) == 'favorites' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-heart"></i>
-                        Favorites
                     </div>
                 </a>
             </li>

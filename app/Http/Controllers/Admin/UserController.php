@@ -242,7 +242,7 @@ class UserController extends Controller
             ]);
         }
 
-        return view('backend.admin.users.index', [
+        return view('admin.users.index', [
             'items' => $items,
             'pagination' => $pagination,
             'name' => $name,

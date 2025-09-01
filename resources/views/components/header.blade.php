@@ -1,7 +1,5 @@
-<div class="container-fluid navbar-fluid">
-    <i class="bi bi-text-paragraph collapse-icon"></i>
-
-    <div class="container">
+<div class="navbar-fluid">
+    <div class="container-lg">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('storage/global/logo.png') }}" alt="Logo" class="logo">
@@ -14,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav align-items-center ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::segment(1) == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ Request::segment(1) == '' ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -23,6 +21,10 @@
 
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'surf-camps' ? 'active' : '' }}" href="{{ route('surf-camps.index') }}">Surf Camps</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::segment(1) == 'surf-camps' ? 'active' : '' }}" href="{{ route('surf-camps.index') }}">Vehicle Rentals</a>
                     </li>
 
                     <li class="nav-item">
@@ -39,7 +41,7 @@
                                     <img src="{{ asset('storage/global/no-profile-image.png') }}" alt="Image" class="profile-image">
                                 @endif
 
-                                <p class="name">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
+                                <p class="name">{{ auth()->user()->name }}</p>
                             </div>
 
                             <ul class="dropdown-menu profile-dropdown-menu">

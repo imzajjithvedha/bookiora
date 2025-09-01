@@ -53,7 +53,7 @@
                 <div class="col-4 mb-4">
                     <label class="form-label label">Gender</label>
                     <select class="form-select input-field" id="gender" name="gender">
-                        <option value="">Select a gender</option>
+                        <option value="">Select Gender</option>
                         <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Male</option>
                         <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>Female</option>
                         <option value="nondisclosure" {{ old('gender', $user->gender) == 'nondisclosure' ? 'selected' : '' }}>Non Disclosure</option>
@@ -63,14 +63,14 @@
 
                 <div class="col-4 mb-4">
                     <label for="address" class="form-label label">Address</label>
-                    <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $user->name) }}">
+                    <input type="text" class="form-control input-field" id="address" name="address" placeholder="Address" value="{{ old('address', $user->address) }}">
                     <x-input-error field="address"></x-input-error>
                 </div>
 
                 <div class="col-4 mb-4">
                     <label class="form-label label">Role<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="role" name="role" required>
-                        <option value="">Select role</option>
+                        <option value="">Select Role</option>
                         <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
                         <option value="partner" {{ old('role', $user->role) == 'partner' ? 'selected' : '' }}>Partner</option>
                         <option value="customer" {{ old('role', $user->role) == 'customer' ? 'selected' : '' }}>Customer</option>

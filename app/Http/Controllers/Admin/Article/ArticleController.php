@@ -20,7 +20,7 @@ class ArticleController extends Controller
             <a href="'. route('admin.articles.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $item->thumbnail = $item->thumbnail ? '<img src="'. asset('storage/backend/articles/' . $item->thumbnail) .'" class="table-image">' : '<img src="'. asset('storage/backend/global/' . Setting::find(1)->no_image) .'" class="table-image">';
+            $item->thumbnail = $item->thumbnail ? '<img src="'. asset('storage/backend/articles/' . $item->thumbnail) .'" class="table-image">' : '<img src="'. asset('storage/global/' . Setting::find(1)->no_image) .'" class="table-image">';
 
             switch ($item->status) {
                 case 1:

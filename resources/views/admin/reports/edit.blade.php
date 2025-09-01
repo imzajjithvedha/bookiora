@@ -21,7 +21,7 @@
                             <option value="{{ $user->id }}" {{ old('user_id', $report->user_id) == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
                         @endforeach
                     </select>
-                    <x-input-error field="user_id"></x-backend.input-error>
+                    <x-input-error field="user_id"></x-input-error>
                 </div>
 
                 <div class="col-6 mb-4">
@@ -32,17 +32,17 @@
                             <option value="{{ $warehouse->id }}" {{ old('warehouse_id', $report->warehouse_id) == $warehouse->id ? 'selected' : '' }}>{{ $warehouse->name_en }}</option>
                         @endforeach
                     </select>
-                    <x-input-error field="warehouse_id"></x-backend.input-error>
+                    <x-input-error field="warehouse_id"></x-input-error>
                 </div>
 
                 <div class="col-12 mb-4">
                     <label for="reason" class="form-label label">Reason<span class="asterisk">*</span></label>
                     <textarea class="form-control input-field textarea" name="reason" id="reason" value="{{ old('reason', $report->reason) }}" placeholder="Reason" rows="5" required>{{ old('reason', $report->reason) }}</textarea>
-                    <x-input-error field="reason"></x-backend.input-error>
+                    <x-input-error field="reason"></x-input-error>
                 </div>
 
-                <x-edit :data="$report"></x-backend.edit>
-                <x-notification></x-backend.notification>
+                <x-edit-status :data="$report"></x-edit>
+                <x-notification></x-notification>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-@extends('backend.layouts.frontend')
+@extends('layouts.backend')
 
 @section('title', 'Supports')
 
@@ -14,35 +14,38 @@
         <div class="row mb-4">
             <div class="col-12">
                 <form class="filter-form">
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-search"></i></span>
-                        <input type="text" class="form-control input-field" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
-                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
+                        </div>
 
-                    <button type="button" class="form-control input-field reset">⟲ Reset Filters</button>
+                        <div class="col-2">
+                            <button type="button" class="form-control input-field raleway reset">⟲ Reset</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <x-pagination pagination="{{ $pagination }}"></x-backend.pagination>
+                <x-pagination pagination="{{ $pagination }}"></x-pagination>
             
                 <div class="table-container">
                     <table class="table w-100">
                         <thead>
                             <tr>
-                                <th scope="col">NAME <i class="bi bi-arrows-vertical sort-icon" data-name="name" data-order="desc"></i></th>
-                                <th scope="col">PHONE <i class="bi bi-arrows-vertical sort-icon" data-name="phone" data-order="desc"></i></th>
-                                <th scope="col">EMAIL <i class="bi bi-arrows-vertical sort-icon" data-name="email" data-order="desc"></i></th>
-                                <th scope="col">CATEGORY <i class="bi bi-arrows-vertical sort-icon" data-name="category" data-order="desc"></i></th>
-                                <th scope="col">SUBJECT <i class="bi bi-arrows-vertical sort-icon" data-name="subject" data-order="desc"></i></th>
-                                <th scope="col">MESSAGE <i class="bi bi-arrows-vertical sort-icon" data-name="message" data-order="desc"></i></th>
-                                <th scope="col">ACTIONS</th>
+                                <th scope="col" class="raleway">NAME <i class="bi bi-arrows-vertical sort-icon" data-name="name" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">PHONE <i class="bi bi-arrows-vertical sort-icon" data-name="phone" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">EMAIL <i class="bi bi-arrows-vertical sort-icon" data-name="email" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">CATEGORY <i class="bi bi-arrows-vertical sort-icon" data-name="category" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">SUBJECT <i class="bi bi-arrows-vertical sort-icon" data-name="subject" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">MESSAGE <i class="bi bi-arrows-vertical sort-icon" data-name="message" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">ACTIONS</th>
                             </tr>
                         </thead>
 
-                        <tbody id="tbody">
+                        <tbody id="tBody">
                             @if(count($items) > 0)
                                 @foreach($items as $item)
                                     <tr>
@@ -57,21 +60,20 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="7" style="text-align: center;">No data available in the table</td>
+                                    <td colspan="7" class="text-center">No data available in the table</td>
                                 </tr>
                             @endif
                         </tbody>
                     </table>
                 </div>
 
-                <div id="pagination">
+                <div id="tPagination">
                     {{ $items->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                 </div>
             </div>
         </div>
 
-        <x-delete data="support"></x-backend.delete>
-        <x-notification></x-backend.notification>
+        <x-delete-data data="support"></x-delete>
     </div>
 @endsection
 
@@ -86,5 +88,5 @@
         };
     </script>
 
-    <script src="{{ asset('backend/js/index-script.js') }}"></script>
+    <script src="{{ asset('js/index-script.js') }}"></script>
 @endpush

@@ -14,7 +14,7 @@
                     @if($warehouse->thumbnail)
                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="main-image">
                     @else
-                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="main-image">
+                        <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="main-image">
                     @endif
 
                     <i class="bi bi-images slider-toggle" data-bs-toggle="modal" data-bs-target="#slide-modal"></i>
@@ -24,13 +24,13 @@
                     @if($warehouse->outside_image)
                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->outside_image) }}" alt="Warehouse" class="side-image">
                     @else
-                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
+                        <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
                     @endif
 
                     @if($warehouse->loading_image)
                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->loading_image) }}" alt="Warehouse" class="side-image">
                     @else
-                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
+                        <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="side-image">
                     @endif
                 </div>
             </div>
@@ -50,7 +50,7 @@
                                                 @if($slider['name'])
                                                     <img src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
                                                 @endif
                                             @elseif($slider['type'] === 'video')
                                                 @if($slider['name'])
@@ -59,7 +59,7 @@
                                                         Your browser does not support the video tag.
                                                     </video>
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
                                                 @endif
                                             @endif
                                         </div>
@@ -75,7 +75,7 @@
                                                 @if($slider['name'])
                                                     <img src="{{ asset('storage/backend/warehouses/' . $slider['name']) }}" alt="Warehouse">
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
                                                 @endif
                                             @elseif($slider['type'] === 'video')
                                                 @if($slider['name'])
@@ -86,7 +86,7 @@
 
                                                     <i class="bi bi-play-circle-fill video-play"></i>
                                                 @else
-                                                    <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
+                                                    <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse">
                                                 @endif
                                             @endif
                                         </div>
@@ -107,7 +107,7 @@
                             @if($warehouse->user->image)
                                 <img src="{{ asset('storage/backend/users/' . $warehouse->user->image) }}" alt="User" class="image">
                             @else
-                                <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_profile_image) }}" alt="User" class="image">
+                                <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_profile_image) }}" alt="User" class="image">
                             @endif
 
                             <div class="profile">
@@ -242,7 +242,7 @@
                                         @if($warehouse->thumbnail)
                                             <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
                                         @else
-                                            <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                            <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
                                         @endif
 
                                         <div class="details">
@@ -438,7 +438,7 @@
                                     @if($warehouse->thumbnail)
                                         <img src="{{ asset('storage/backend/warehouses/' . $warehouse->thumbnail) }}" alt="Warehouse" class="image">
                                     @else
-                                        <img src="{{ asset('storage/backend/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
+                                        <img src="{{ asset('storage/global/' . App\Models\Setting::find(1)->no_image) }}" alt="Warehouse" class="image">
                                     @endif
 
                                     <div class="details">
