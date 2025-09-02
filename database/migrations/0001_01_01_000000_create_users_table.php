@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('image')->nullable();
 
-            $table->enum('role', ['admin', 'partner', 'customer']);
+            $table->enum('role', ['admin', 'partner', 'explorer']);
             $table->boolean('is_new')->default(1);
             $table->boolean('status')->default(2);
             $table->rememberToken();

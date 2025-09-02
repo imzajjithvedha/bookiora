@@ -20,7 +20,7 @@ class RedirectIfAuthenticatedMiddleware
                 return redirect()->route('partner.dashboard');
             }
             else {
-                return redirect()->route('dashboard');
+                return redirect()->route('explorer.dashboard');
             }
         }
 

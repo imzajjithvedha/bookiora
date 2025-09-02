@@ -6,7 +6,7 @@
         font-family: "Raleway", sans-serif;
     }
     :root {
-        --color-gray-very-light: #FAFAFA;
+        --color-gray-very-light: #f6f6f6;
         --color-gray-light: #E0E0E0;
         --color-gray: #9E9E9E;
         --color-gray-dark: #6D6D6D;
@@ -54,23 +54,23 @@
         color: var(--color-red);
         margin-left: 3px;
     }
-    p[data-f-id="pbf"], p[data-f-id="pbf"] a {
+    /* p[data-f-id="pbf"], p[data-f-id="pbf"] a {
         display: none !important;
     }
     .fr-wrapper > div:first-of-type {
         display: none !important;
-    }
+    } */
     .textarea {
         height: initial!important;
     }
 /* #endregion */
 
 
-/* #region: Navbar */
+/* #region: Navbar - Completed */
     .navbar-fluid {
         background: var(--color-deep-green);
     }
-    .navbar-fluid .collapse-icon {
+    .navbar-fluid .sidebar-icon {
         display: none;
     }
     .navbar {
@@ -93,6 +93,7 @@
         color: var(--color-white);
     }
     .navbar .nav-link.active {
+        color: var(--color-white);
         font-weight: 600;
     }
     .navbar .nav-item:last-child {
@@ -144,12 +145,12 @@
     .navbar .dropdown .profile .name {
         color: var(--color-white);
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 500;
     }
     .navbar .dropdown .profile-dropdown-menu {
         border: none;
         font-size: 15px;
-        left: 5%;
+        left: -5%;
         top: 110%;
         border-radius: 0;
         padding: 0;
@@ -175,7 +176,7 @@
         };
     }
     .navbar .dropdown .dropdown-menu i {
-        font-size: 19px;
+        font-size: 20px;
         padding-right: 8px;
     }
     .navbar .dropdown .dropdown-menu .log-out {
@@ -189,7 +190,7 @@
 /* #endregion */
 
 
-/* #region: Footer */
+/* #region: Footer - Completed */
     .footer {
         background-color: var(--color-deep-green);
         padding-top: 2%;
@@ -234,13 +235,10 @@
     .footer .copyright {
         padding: 25px 0;
     }
-    /* In future */
     .footer .copyright .logo {
-        /* width: 80px; */
         height: 40px;
         object-fit: cover;
     }
-    /* In future */
     .footer .copyright .text {
         font-size: 14px;
         color: var(--color-white);
@@ -248,20 +246,20 @@
 /* #endregion */
 
 
-/* #region: Notification */
+/* #region: Notification - Completed */
     .notification-modal {
         text-align: center;
     }
     .notification-modal .modal-body {
         padding: 30px;
     }
-    .notification-modal .title {
+    .notification-modal .notification-title {
         font-size: 24px;
         font-weight: 600;
         padding-bottom: 10px;
         color: var(--color-bg-dark-alt);
     }
-    .notification-modal .description {
+    .notification-modal .notification-description {
         font-size: 16px;
         color: var(--color-bg-dark-alt);
     }
@@ -332,16 +330,7 @@
 /* #endregion */
 
 
-/* #region: Responsive */
-@media (width < 1921px) {}
-    @media (width < 1901px) {}
-    @media (width < 1851px) {}
-    @media (width < 1801px) {}
-    @media (width < 1751px) {}
-    @media (width < 1681px) {}
-    @media (width < 1601px) {}
-    @media (width < 1537px) {}
-    @media (width < 1441px) {}
+/* #region: Responsive - Completed */
     @media (width < 1401px) {
         .navbar {
             padding: 5px 0;
@@ -363,14 +352,6 @@
             font-size: 16px;
             padding: 10px 20px!important;
             margin-left: 15px;
-        }
-    }
-    @media (width < 1367px) {}
-    @media (width < 1301px) {}
-    @media (width < 1281px) {}
-    @media (width < 1201px) {
-        .navbar .logo {
-            height: 50px;
         }
     }
     @media (width < 1151px) {
@@ -397,8 +378,6 @@
             padding: 10px 0;
         }
     }
-    @media (width < 1076px) {}
-    @media (width < 1025px) {}
     @media (width < 992px) {
         .navbar {
             padding: 0;
@@ -439,14 +418,10 @@
             font-size: 16px;
             padding: 10px!important;
         }
-        .navbar .nav-link.active {
-            color: var(--color-white);
-            text-decoration: underline!important;
-        }
         .navbar .login-button {
             font-size: 18px;
-            padding: 10px 30px !important;
-            margin-bottom: 15px;
+            padding: 10px 30px!important;
+            margin-bottom: 10px;
         }
         .navbar .register-button {
             font-size: 18px;
@@ -465,8 +440,20 @@
             position: absolute;
         }
     }
-    @media (width < 845px) {}
     @media (width < 768px) {
+        .navbar .navbar-nav {
+            gap: 5px;
+        }
+        .navbar .navbar-collapse {
+            width: 220px;
+        }
+        .navbar .nav-link {
+            font-size: 15px;
+        }
+        .navbar .dropdown .profile-dropdown-menu {
+            left: -100%;
+        }
+
         .footer {
             margin-top: 5%;
             padding-top: 3%;
@@ -493,18 +480,45 @@
         .footer .copyright .text {
             font-size: 12px;
         }
+
+        .notification-modal .modal-body {
+            padding: 20px;
+        }
+        .notification-modal .tick-icon {
+            font-size: 30px;
+        }
+        .notification-modal .notification-title {
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+        .notification-modal .notification-description {
+            font-size: 14px;
+        }
+        .notification-modal .close-button {
+            font-size: 13px;
+            margin-top: 15px;
+        }
+        .notification-modal .buttons {
+            margin-top: 15px;
+            gap: 15px;
+        }
+        .notification-modal .cancel-button {
+            font-size: 13px;
+        }
+        .notification-modal .modal-delete-button {
+            font-size: 13px;
+            width: 160px;
+            height: 45px;
+        }
     }
-    @media (width < 721px) {}
-    @media (width < 576px) {}
-    @media (width < 481px) {}
-    @media (width < 429px) {}
-    @media (width < 415px) {}
+    @media (width < 481px) {
+        .navbar .navbar-toggler .icon {
+            font-size: 30px;
+        }
+    }
     @media (width < 396px) {
         .footer .top .text {
             font-size: 17px;
         }
     }
-    @media (width < 377px) {}
-    @media (width < 361px) {}
-    @media (width < 331px) {}
 /* #endregion */

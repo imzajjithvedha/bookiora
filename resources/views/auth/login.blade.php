@@ -16,13 +16,13 @@
                 <form action="{{ route('login.store') }}" method="POST" class="form">
                     @csrf
                     <div class="mb-3 mb-md-4">
-                        <label for="email" class="form-label label">Email Address</label>
+                        <label for="email" class="form-label label">Email Address<span class="asterisk">*</span></label>
                         <input type="email" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email address" required>
                         <x-input-error field="email"></x-input-error>
                     </div>
 
                     <div class="mb-3 mb-md-4 position-relative">
-                        <label for="password" class="form-label label">Password</label>
+                        <label for="password" class="form-label label">Password<span class="asterisk">*</span></label>
                         <input type="password" class="form-control input-field" id="password" name="password" placeholder="Enter your password" required>
                         <span class="bi bi-eye-slash-fill toggle-password"></span>
                     </div>

@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -13,12 +12,18 @@ class AccountRegisterMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct(public $mail)
+    protected $mail;
+    protected $type;
+    protected $title;
+
+    public function __construct($mail, $type)
     {
-        //
+        $this->mail = $mail;
+        $this->type = $type;
+
+        $this->title = $type === 'admin'
+            ? sprintf('New user registered at %s!', config('app.name'))
+            : sprintf('Welcome to %s!', config('app.name'));
     }
 
     /**
@@ -27,7 +32,7 @@ class AccountRegisterMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: sprintf('Welcome to %s. Let\'s Get Started!', config('app.name'))
+            subject: $this->title
         );
     }
 
@@ -36,8 +41,16 @@ class AccountRegisterMail extends Mailable
      */
     public function content(): Content
     {
+        $view = $this->type === 'admin'
+        ? 'mail.account-register-admin'
+        : 'mail.account-register-user';
+
         return new Content(
-            view: 'mail.account-register',
+            view: $view,
+            with: [
+                'mail' => $this->mail,
+                'subject' => $this->title
+            ],
         );
     }
 

@@ -37,7 +37,7 @@
         position: absolute;
         top: 50px;
         font-size: 20px;
-        right: 25px;
+        right: 15px;
     }
     .inner-page .form .radios {
         display: flex;
@@ -58,7 +58,7 @@
     }
     .inner-page .form .form-check .form-check-label {
         line-height: 15px;
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 500;
         color: var(--color-bg-dark-alt);
         cursor: pointer;
@@ -133,7 +133,7 @@
 /* #endregion */
 
 
-/* #region: Select 2 */
+/* #region: Select 2 - Completed */
     .inner-page .select2-container--default .select2-selection--single {
         border: 1px solid var(--color-gray-light);
         border-radius: 0;
@@ -150,13 +150,16 @@
     .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
         background-color: var(--color-primary-dark);
     }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: var(--color-bg-dark-alt);
+    }
     .select2-results__option {
         font-size: 15px;
     }
 /* #endregion */
 
 
-/* #region: Drop area */
+/* #region: Drop area - Completed */
     .inner-page .drop-area {
         border: 1px dashed var(--color-primary);
         background-color: var(--color-gray-very-light);
@@ -228,10 +231,10 @@
     .inner-page .drop-area .download-icon {
         right: 30px;
     }
-    /* .inner-page .drop-area .condition {
+    .inner-page .drop-area .condition {
         font-size: 14px;
-        color: var(--gray);
-    } */
+        color: var(--color-gray);
+    }
     .inner-page .drop-area.highlight {
         border: 1px solid var(--color-red);
     }
@@ -324,7 +327,7 @@
 /* #endregion */
 
 
-/* #region: Message */
+/* #region: Message - Completed */
     .inner-page .message-form {
         background-color: var(--color-white);
         padding: 20px;
@@ -386,7 +389,7 @@
         text-align: end;
     }
     .inner-page .message-form .chat-box::-webkit-scrollbar {
-        width: 8px;
+        width: 5px;
     }
     .inner-page .message-form .chat-box::-webkit-scrollbar-track {
         background: var(--color-gray-light)
@@ -401,19 +404,19 @@
 /* #endregion */
 
 
-/* #region: Upload preview */
-    .upload-image-preview .modal-content, .upload-video-preview .modal-content {
+/* #region: Image preview */
+    .modal-image-preview .modal-content, .modal-video-preview .modal-content {
         border-radius: 0;
     }
-    .upload-image-preview .modal-body, .upload-video-preview .modal-body {
+    .modal-image-preview .modal-body, .modal-video-preview .modal-body {
         padding: 10px;
     }
-    .upload-image-preview .modal-body .modal-image, .upload-video-preview .modal-body .modal-video {
+    .modal-image-preview .modal-body .modal-image, .modal-video-preview .modal-body .modal-video {
         width: 100%;
         height: 80vh;
         object-fit: cover;
     }
-    .upload-image-preview .close-button, .upload-video-preview .close-button {
+    .modal-image-preview .close-button, .modal-video-preview .close-button {
         border: 1px solid var(--color-bg-dark-alt);
         font-size: 15px;
         font-weight: 600;
@@ -427,7 +430,7 @@
             transition: all 0.3s;
         }
     }
-    .upload-image-preview .download-button, .upload-video-preview .download-button {
+    .modal-image-preview .download-button, .modal-video-preview .download-button {
         background-color: var(--color-primary);
         font-size: 16px;
         font-weight: 600;
@@ -437,6 +440,242 @@
         &:hover {
             background-color: var(--color-primary-dark);
             transition: all 0.3s;
+        }
+    }
+/* #endregion */
+
+
+/* #region: Responsive */
+    @media (width < 1281px) {
+        .inner-page .page-details .title {
+            font-size: 21px;
+        }
+        .inner-page .form .label {
+            font-size: 15px;
+            margin-bottom: 3px!important;
+        }
+        .inner-page .form .input-field {
+            height: 50px;
+            font-size: 14px;
+        }
+        .inner-page .form .input-field::placeholder {
+            font-size: 14px;
+        }
+        .inner-page .select2-container--default .select2-selection--single {
+            height: 50px;
+            font-size: 14px;
+        }
+        .select2-results__option {
+            font-size: 14px;
+        }
+        .inner-page .form .toggle-password {
+            top: 40px;
+            font-size: 18px;
+        }
+        .inner-page .drop-area {
+            padding: 0 10%;
+        }
+        .inner-page .drop-area i {
+            font-size: 35px;
+        }
+        .inner-page .drop-area .drag-drop {
+            font-size: 18px;
+        }
+        .inner-page .drop-area .line-or {
+            margin-top: 5px;
+        }
+        .inner-page .drop-area .button {
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .inner-page .drop-area .condition {
+            font-size: 13px;
+        }
+        .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
+            width: 150px;
+            height: 100px;
+        }
+        .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .inner-page .form .radios {
+            gap: 25px;
+        }
+        .inner-page .form .form-check {
+            gap: 5px;
+        }
+        .inner-page .form .form-check .form-check-input {
+            width: 20px;
+            height: 20px;
+        }
+        .inner-page .form .form-check .form-check-label {
+            font-size: 14px;
+        }
+        .inner-page .form .submit-button {
+            font-size: 15px;
+            width: 180px;
+            height: 50px;
+        }
+
+        .inner-page .message-form .chat-box .left-single-message .left-message, .inner-page .message-form .chat-box .right-single-message .right-message {
+            padding: 10px;
+        }
+        .inner-page .message-form .chat-box .profile-image {
+            height: 30px;
+            width: 30px;
+        }
+        .inner-page .message-form .chat-box .left-single-message .time, .inner-page .message-form .chat-box .right-single-message .time {
+            font-size: 11px;
+        }
+    }
+    @media (width < 992px) {
+        .modal-image-preview .modal-body .modal-image, .modal-video-preview .modal-body .modal-video {
+            height: 50vh;
+        }
+        .modal-image-preview .download-button, .modal-video-preview .download-button {
+            font-size: 13px;
+        }
+        .modal-image-preview .close-button, .modal-video-preview .close-button {
+            font-size: 12px;
+        }
+    }
+    @media (width < 768px) {
+        .inner-page .page-details .title {
+            font-size: 18px;
+        }
+        .inner-page .page-details .description {
+            font-size: 13px;
+        }
+        .inner-page .form .label {
+            font-size: 13px;
+        }
+        .inner-page .form .input-field {
+            height: 45px;
+            font-size: 13px;
+        }
+        .inner-page .form .input-field::placeholder {
+            font-size: 13px;
+        }
+        .inner-page .form .toggle-password {
+            top: 35px;
+            font-size: 17px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            font-size: 13px;
+        }
+        .select2-results__option {
+            font-size: 13px;
+        }
+        .inner-page .drop-area {
+            height: 360px;
+        }
+        .inner-page .drop-area i {
+            font-size: 30px;
+        }
+        .inner-page .drop-area .drag-drop {
+            font-size: 16px;
+        }
+        .inner-page .drop-area .image-preview, .inner-page .drop-area .video-preview {
+            width: 125px;
+            height: 80px;
+        }
+        .inner-page .drop-area .image-preview img, .inner-page .drop-area .video-preview video {
+            width: 125px;
+            height: 80px;
+        }
+        .inner-page .form .form-check .form-check-label {
+            font-size: 13px;
+        }
+        .inner-page .form .submit-button {
+            width: 150px;
+            height: 40px;
+        }
+
+        .inner-page .message-form .chat-box .left-single-message .left-message, .inner-page .message-form .chat-box .right-single-message .right-message {
+            padding: 5px;
+            font-size: 12px;
+        }
+        .inner-page .message-form .chat-box .left-single-message, .inner-page .message-form .chat-box .right-single-message {
+            width: 100%;
+            gap: 10px;
+        }
+    }
+    @media (width < 377px) {
+        .inner-page .form .radios {
+            gap: 20px;
+        }
+    }
+
+
+
+
+
+    @media (width <= 1281px) {
+        /* .inner-page .inner-page-top-title {
+            font-size: 21px;
+        }
+        .inner-page .inner-page-top-description {
+            font-size: 16px;
+        }
+        .inner-page .nav-pills {
+            margin-bottom: 15px;
+        }
+        .inner-page .nav-pills .nav-item .nav-link {
+            font-size: 15px;
+            padding-bottom: 5px;
+        }
+        .inner-page .tab-content {
+            padding: 15px;
+        }
+        .inner-page .tab-content .tab-content-title {
+            font-size: 16px;
+            padding-bottom: 5px;
+        }
+        */
+        /* .inner-page .map-address {
+            font-size: 13px;
+            margin-bottom: 5px !important;
+        } */
+
+        /* .inner-page .form .textarea {
+            height: initial;
+        } */
+    }
+    @media (width <= 1025px) {
+        .inner-page .form .section .add-row-button, .inner-page .form .add-row-button {
+            font-size: 12px;
+        }
+        .inner-page .form .section .add-row-button i, .inner-page .form .add-row-button i {
+            font-size: 12px;
+        }
+    }
+    @media (width <= 768px) {
+        .inner-page .inner-page-top-title {
+            font-size: 18px;
+        }
+        .inner-page .inner-page-top-description {
+            font-size: 13px;
+        }
+        .inner-page .nav-pills .nav-item {
+            margin-right: 25px;
+        }
+        .inner-page .nav-pills .nav-item .nav-link {
+            font-size: 14px;
+        }
+        .inner-page .inner-page-title {
+            font-size: 14px;
+            padding-bottom: 2px;
+        }
+    }
+    @media (width <= 429px) {
+        .inner-page .nav-pills {
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
     }
 /* #endregion */

@@ -1,4 +1,4 @@
-/* #region: Global */
+/* #region: Global - Completed */
     .page-auth .title {
         font-size: 32px;
         font-weight: 500;
@@ -61,7 +61,7 @@
 /* #endregion */
 
 
-/* #region: Login */
+/* #region: Login - Completed */
     .login .remember {
         font-size: 14px;
         color: var(--color-gray-dark);
@@ -81,7 +81,7 @@
 /* #endregion */
 
 
-/* #region: Register */
+/* #region: Register - Completed */
     .register .radio-label {
         font-size: 16px;
         color: var(--color-bg-dark-alt);
@@ -102,26 +102,7 @@
 /* #endregion */
 
 
-/* #region: Responsive */
-    @media (width < 1921px) {}
-    @media (width < 1901px) {}
-    @media (width < 1851px) {}
-    @media (width < 1801px) {}
-    @media (width < 1751px) {}
-    @media (width < 1681px) {}
-    @media (width < 1601px) {}
-    @media (width < 1537px) {}
-    @media (width < 1441px) {}
-    @media (width < 1401px) {}
-    @media (width < 1367px) {}
-    @media (width < 1301px) {}
-    @media (width < 1281px) {}
-    @media (width < 1201px) {}
-    @media (width < 1151px) {}
-    @media (width < 1076px) {}
-    @media (width < 1025px) {}
-    @media (width < 992px) {}
-    @media (width < 845px) {}
+/* #region: Responsive - Completed */
     @media (width < 768px) {
         .page-auth .title {
             font-size: 22px;
@@ -158,9 +139,6 @@
             font-size: 15px;
         }
     }
-    @media (width < 721px) {}
-    @media (width < 576px) {}
-    @media (width < 481px) {}
     @media (width < 429px) {
         .page-auth .label {
             font-size: 14px;
@@ -179,9 +157,4 @@
             font-size: 14px;
         }
     }
-    @media (width < 415px) {}
-    @media (width < 396px) {}
-    @media (width < 377px) {}
-    @media (width < 361px) {}
-    @media (width < 331px) {}
 /* #endregion */

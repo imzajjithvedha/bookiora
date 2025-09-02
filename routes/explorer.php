@@ -4,9 +4,9 @@ use App\Http\Controllers\Customer\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth', 'role:customer'])->group(function () {
+Route::middleware(['auth', 'role:explorer'])->group(function () {
     Route::get('dashboard', function () {
-        return redirect()->route('customer.dashboard');
+        return redirect()->route('explorer.dashboard');
     });
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

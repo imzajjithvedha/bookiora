@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\VehicleRental;
 
 use App\Http\Controllers\Controller;
 use App\Models\StorageType;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class StayController extends Controller
+class VehicleRentalController extends Controller
 {
     private function processData($items)
     {

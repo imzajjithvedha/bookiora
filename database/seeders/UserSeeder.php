@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'name' => 'Shajitha Banu',
                 'email' => 'shajitha@yopmail.com',
                 'password' => bcrypt('secret'),
-                'role' => 'customer',
+                'role' => 'explorer',
             ]
         ];
 

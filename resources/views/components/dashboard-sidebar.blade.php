@@ -21,29 +21,7 @@
                     <div class="actual-link">
                         <i class="bi bi-people"></i>
                         Users
-                        <p class="new-count">{{ App\Models\User::where('is_new', 1)->count() != 0 ? App\Models\User::where('is_new', 1)->count() : ''; }}</p>
-                    </div>
-                </a>
-            </li>
-
-            <li class="link">
-                <a href="{{ route('admin.stays.index') }}" class="{{ Request::segment(2) == 'stays' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-houses"></i>
-                        Stays
-                        <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : ''; }}</p>
-                    </div>
-                </a>
-            </li>
-
-            <li class="link">
-                <a href="{{ route('admin.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
-                    <div class="box"></div>
-                    <div class="actual-link">
-                        <i class="bi bi-ui-checks"></i>
-                        Bookings
-                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
+                        <p class="new-count">{{ App\Models\User::where('is_new', 1)->count() != 0 ? App\Models\User::where('is_new', 1)->count() : '' }}</p>
                     </div>
                 </a>
             </li>
@@ -113,15 +91,83 @@
 
         <ul class="main-menu">
             <li class="link">
-                <a href="{{ route('admin.article-categories.index') }}" class="{{ Request::segment(2) == 'article-categories' ? 'active' : '' }}">
+                <a href="{{ route('admin.stays.index') }}" class="{{ Request::segment(2) == 'stays' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-bookmarks"></i>
-                        Article Categories
+                        <i class="bi bi-houses"></i>
+                        Stays
+                        <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : '' }}</p>
                     </div>
                 </a>
             </li>
 
+            <li class="link">
+                <a href="{{ route('admin.stays.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-ui-checks"></i>
+                        Bookings
+                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="main-menu">
+            <li class="link">
+                <a href="{{ route('admin.surf-camps.index') }}" class="{{ Request::segment(2) == 'surf-camps' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-houses"></i>
+                        Surf Camps
+                        <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : '' }}</p>
+                    </div>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('admin.surf-camps.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-ui-checks"></i>
+                        Bookings
+                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="main-menu">
+            <li class="link">
+                <a href="{{ route('admin.vehicle-rentals.index') }}" class="{{ Request::segment(2) == 'vehicle-rentals' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-houses"></i>
+                        Vehicle Rentals
+                        <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : '' }}</p>
+                    </div>
+                </a>
+            </li>
+
+            <li class="link">
+                <a href="{{ route('admin.vehicle-rentals.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
+                    <div class="box"></div>
+                    <div class="actual-link">
+                        <i class="bi bi-ui-checks"></i>
+                        Bookings
+                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="main-menu">
             <li class="link">
                 <a href="{{ route('admin.articles.index') }}" class="{{ Request::segment(2) == 'articles' ? 'active' : '' }}">
                     <div class="box"></div>
@@ -171,7 +217,7 @@
         </ul>
     </div>
 @elseif(auth()->user()->role == 'partner')
-    <div class="sidebar">
+    <div class="sidebar active">
         <ul class="main-menu">
             <li class="link">
                 <a href="{{ route('landlord.dashboard') }}" class="{{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">
@@ -266,7 +312,7 @@
         </ul>
     </div>
 @else
-    <div class="sidebar">
+    <div class="sidebar active">
         <ul class="main-menu">
             <li class="link">
                 <a href="{{ route('tenant.dashboard') }}" class="{{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">

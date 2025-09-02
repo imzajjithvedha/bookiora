@@ -4,12 +4,12 @@
 
 @section('content')
     <div class="page">
-        <div class="row align-items-center mb-4">
-            <div class="col-8">
+        <div class="row align-items-center mb-3 mb-md-4">
+            <div class="col-12 mb-3 mb-md-0 col-md-8">
                 <p class="title raleway">Users</p>
                 <p class="description">Manage user accounts, roles, and activity here.</p>
             </div>
-            <div class="col-4 text-end">
+            <div class="col-12 col-md-4 text-end">
                 <a href="{{ route('admin.users.create') }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
                     Add New User
@@ -17,43 +17,39 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-12">
-                <form class="filter-form">
-                    <div class="row">
-                        <div class="col-3">
-                            <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
-                        </div>
+        <form class="filter-form mb-3 mb-md-4">
+            <div class="row">
+                <div class="col-12 col-lg-3 mb-2 mb-lg-0">
+                    <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
+                </div>
 
-                        <div class="col-3">
-                            <input type="text" class="form-control input-field raleway" name="email" value="{{ $email ?? '' }}" placeholder="Email">
-                        </div>
+                <div class="col-12 col-lg-3 mb-2 mb-lg-0">
+                    <input type="text" class="form-control input-field raleway" name="email" value="{{ $email ?? '' }}" placeholder="Email">
+                </div>
 
-                        <div class="col-2">
-                            <select class="form-select input-field raleway" name="role">
-                                <option value="">User Role</option>
-                                <option value="admin" {{ isset($role) && $role == 'admin' ? "selected" : "" }}>Admin</option>
-                                <option value="partner" {{ isset($role) && $role == 'partner' ? "selected" : "" }}>Partner</option>
-                                <option value="customer" {{ isset($role) && $role == 'customer' ? "selected" : "" }}>Customer</option>
-                            </select>
-                        </div>
+                <div class="col-12 col-lg-2 mb-2 mb-lg-0">
+                    <select class="form-select input-field raleway" name="role">
+                        <option value="">Role</option>
+                        <option value="admin" {{ isset($role) && $role == 'admin' ? "selected" : "" }}>Admin</option>
+                        <option value="partner" {{ isset($role) && $role == 'partner' ? "selected" : "" }}>Partner</option>
+                        <option value="explorer" {{ isset($role) && $role == 'explorer' ? "selected" : "" }}>Explorer</option>
+                    </select>
+                </div>
 
-                        <div class="col-2">
-                            <select class="form-select input-field raleway" name="status">
-                                <option value="">Status</option>
-                                <option value="2" {{ isset($status) && $status == 2 ? "selected" : "" }}>Active</option>
-                                <option value="1" {{ isset($status) && $status == 1 ? "selected" : "" }}>Pending</option>
-                                <option value="0" {{ isset($status) && $status == 0 ? "selected" : "" }}>Inactive</option>
-                            </select>
-                        </div>
-                        
-                        <div class="col-2">
-                            <button type="button" class="form-control input-field raleway reset">⟲ Reset</button>
-                        </div>
-                    </div>
-                </form>
+                <div class="col-12 col-lg-2 mb-2 mb-lg-0">
+                    <select class="form-select input-field raleway" name="status">
+                        <option value="">Status</option>
+                        <option value="2" {{ isset($status) && $status == 2 ? "selected" : "" }}>Active</option>
+                        <option value="1" {{ isset($status) && $status == 1 ? "selected" : "" }}>Pending</option>
+                        <option value="0" {{ isset($status) && $status == 0 ? "selected" : "" }}>Inactive</option>
+                    </select>
+                </div>
+                
+                <div class="col-12 col-lg-2">
+                    <button type="button" class="form-control input-field raleway reset">⟲ Reset</button>
+                </div>
             </div>
-        </div>
+        </form>
 
         <div class="row">
             <div class="col-12">

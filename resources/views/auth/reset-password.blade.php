@@ -16,14 +16,14 @@
                 <form action="{{ route('reset-password.store') }}" method="POST" class="form">
                     @csrf
                     <div class="mb-3 mb-md-4 position-relative">
-                        <label for="password" class="form-label label">New Password</label>
+                        <label for="password" class="form-label label">New Password<span class="asterisk">*</span></label>
                         <input type="password" class="form-control input-field" id="password" name="password" placeholder="Enter your new password" required>
                         <span class="bi bi-eye-slash-fill toggle-password"></span>
                         <x-input-error field="password"></x-input-error>
                     </div>
 
                     <div class="mb-3 mb-md-4 position-relative">
-                        <label for="passwordConfirmation" class="form-label label">Confirm Password</label>
+                        <label for="passwordConfirmation" class="form-label label">Confirm Password<span class="asterisk">*</span></label>
                         <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="Confirm your password" required/>
                         <span class="bi bi-eye-slash-fill toggle-password"></span>
                         <x-input-error field="password_confirmation"></x-input-error>

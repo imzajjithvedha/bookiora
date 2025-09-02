@@ -3,8 +3,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <i class="bi bi-check-circle-fill tick-icon"></i>
-                <p class="title raleway">{{ session('success') }}</p>
-                <p class="description">{{ session('message') }}</p>
+                <p class="notification-title raleway">{{ session('success') }}</p>
+                <p class="notification-description">{{ session('message') }}</p>
 
                 <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
             </div>
@@ -17,8 +17,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <i class="bi bi-x-circle-fill close-icon"></i>
-                <p class="title raleway">{{ session('error') }}</p>
-                <p class="description">{{ session('message') }}</p>
+                <p class="notification-title raleway">{{ session('error') }}</p>
+                <p class="notification-description">{{ session('message') }}</p>
 
                 <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Close">Close</button>
             </div>

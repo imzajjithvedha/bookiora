@@ -11,8 +11,8 @@
         @stack('before-styles')
             <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-            <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
             <link rel="stylesheet" href="{{ asset('css/date-picker-x.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
             <link rel="stylesheet" href="{{ asset('css/froala.css') }}">
             <link rel="stylesheet" href="{{ asset('css/global.css') }}">
             <link rel="stylesheet" href="{{ asset('css/backend.css') }}">
@@ -29,9 +29,8 @@
             </div>
         </div>
 
-        <x-dashboard-footer></x-dashboard-footer>
         <x-notification></x-notification>
-        <x-upload-image-preview></x-upload-image-preview>
+        <x-modal-image-preview></x-modal-image-preview>
     
         @stack('before-scripts')
             <script src="{{ asset('js/jquery.js') }}"></script>

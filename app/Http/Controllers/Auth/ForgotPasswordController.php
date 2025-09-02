@@ -7,9 +7,7 @@ use App\Models\PasswordResetToken;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\AccountForgotPasswordMail;
-use App\Models\AuthenticationContent;
 
 class ForgotPasswordController extends Controller
 {
@@ -48,7 +46,7 @@ class ForgotPasswordController extends Controller
             'token' => $token
         ];
 
-        Mail::to($user->email)->send(new AccountForgotPasswordMail($mail));
+        send_email(new AccountForgotPasswordMail($mail), $user->email);
 
         return redirect()->back()->with([
             'success' => "Email sent successfully",

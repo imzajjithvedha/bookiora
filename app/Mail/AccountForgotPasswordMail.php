@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -13,12 +12,13 @@ class AccountForgotPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct(public $mail)
+    protected $mail;
+    protected $title;
+
+    public function __construct($mail)
     {
-        //
+        $this->mail = $mail;
+        $this->title = sprintf('Reset your password - %s!', config('app.name'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AccountForgotPasswordMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reset Your Password - ' . config('app.name'),
+            subject: $this->title
         );
     }
 
@@ -38,6 +38,10 @@ class AccountForgotPasswordMail extends Mailable
     {
         return new Content(
             view: 'mail.account-forgot-password',
+            with: [
+                'mail' => $this->mail,
+                'subject' => $this->title
+            ],
         );
     }
 

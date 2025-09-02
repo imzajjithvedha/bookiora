@@ -28,32 +28,32 @@ class MessageController extends Controller
     {
         $pagination = $request->pagination ?? 10;
 
-        $all_count = Message::where('admin_status', 1)->get()->count();
-        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
-        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
-        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('admin_status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 2)->get()->count();
+        $general_count = Message::where('admin_status', 2)->where('category', 'general')->get()->count();
+        $partner_count = Message::where('admin_status', 2)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 2)->where('category', 'explorer')->get()->count();
+        $starred_count = Message::where('admin_status', 2)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 1)->get()->count();
 
         Message::where('admin_view', 1)->update(['admin_view' => 0]);
 
         if($category == 'all') {
-            $items = Message::where('admin_status', 1)->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 2)->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'general') {
-            $items = Message::where('admin_status', 1)->where('category', 'general')->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 2)->where('category', 'general')->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'partner') {
-            $items = Message::where('admin_status', 1)->where('category', 'partner')->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 2)->where('category', 'partner')->orderBy('id', 'desc')->paginate($pagination);
         }
-        elseif($category == 'customer') {
-            $items = Message::where('admin_status', 1)->where('category', 'customer')->orderBy('id', 'desc')->paginate($pagination);
+        elseif($category == 'explorer') {
+            $items = Message::where('admin_status', 2)->where('category', 'explorer')->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'starred') {
-            $items = Message::where('admin_status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 2)->where('admin_favorite', 1)->orderBy('id', 'desc')->paginate($pagination);
         }
         elseif($category == 'bin') {
-            $items = Message::where('admin_status', 0)->orderBy('id', 'desc')->paginate($pagination);
+            $items = Message::where('admin_status', 1)->orderBy('id', 'desc')->paginate($pagination);
         }
         
         $items = $this->processData($items);
@@ -75,12 +75,12 @@ class MessageController extends Controller
     {
         $users = User::whereNot('id', auth()->user()->id)->get();
         
-        $all_count = Message::where('admin_status', 1)->get()->count();
-        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
-        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
-        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('admin_status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 2)->get()->count();
+        $general_count = Message::where('admin_status', 2)->where('category', 'general')->get()->count();
+        $partner_count = Message::where('admin_status', 2)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 2)->where('category', 'explorer')->get()->count();
+        $starred_count = Message::where('admin_status', 2)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 1)->get()->count();
 
         return view('admin.messages.create', [
             'users' => $users,
@@ -97,16 +97,14 @@ class MessageController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'category' => 'required|in:general,partner,customer',
-            'subject' => 'required|min:3|max:255',
-            'initial_message' => 'required'
-        ], [
-            'initial_message' => 'The message field is required.'
+            'category' => 'required|in:general,partner,explorer',
+            'subject' => 'required|min:3|max:100',
+            'initial_message' => 'required|min:3|max:200'
         ]);
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
-                'error' => 'Sending Failed!',
+                'error' => 'Sending failed',
                 'message' => 'We couldn\'t send the message.'
             ]);
         }
@@ -119,19 +117,19 @@ class MessageController extends Controller
         $message = Message::create($data);
 
         return redirect()->route('admin.messages.index', 'all')->with([
-            'success' => "Sent Successful!",
+            'success' => 'Sent successful',
             'message' => 'Message sent successfully.'
         ]);
     }
 
     public function edit(Message $message)
     {
-        $all_count = Message::where('admin_status', 1)->get()->count();
-        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
-        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
-        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('admin_status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 2)->get()->count();
+        $general_count = Message::where('admin_status', 2)->where('category', 'general')->get()->count();
+        $partner_count = Message::where('admin_status', 2)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 2)->where('category', 'explorer')->get()->count();
+        $starred_count = Message::where('admin_status', 2)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 1)->get()->count();
 
         $message_replies = MessageReply::where('message_id', $message->id)->where('status', 1)->get();
 
@@ -166,12 +164,12 @@ class MessageController extends Controller
     public function update(Request $request, Message $message)
     {
         $validator = Validator::make($request->all(), [
-            'message' => 'required'
+            'message' => 'required|min:3|max:200'
         ]);
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
-                'error' => 'Sending Failed!',
+                'error' => 'Sending failed',
                 'message' => 'We couldn\'t send the message.'
             ]);
         }
@@ -193,30 +191,30 @@ class MessageController extends Controller
     {
         $text = $request->text;
 
-        $all_count = Message::where('admin_status', 1)->get()->count();
-        $general_count = Message::where('admin_status', 1)->where('category', 'general')->get()->count();
-        $partner_count = Message::where('admin_status', 1)->where('category', 'partner')->get()->count();
-        $customer_count = Message::where('admin_status', 1)->where('category', 'customer')->get()->count();
-        $starred_count = Message::where('admin_status', 1)->where('admin_favorite', 1)->get()->count();
-        $bin_count = Message::where('admin_status', 0)->get()->count();
+        $all_count = Message::where('admin_status', 2)->get()->count();
+        $general_count = Message::where('admin_status', 2)->where('category', 'general')->get()->count();
+        $partner_count = Message::where('admin_status', 2)->where('category', 'partner')->get()->count();
+        $customer_count = Message::where('admin_status', 2)->where('category', 'explorer')->get()->count();
+        $starred_count = Message::where('admin_status', 2)->where('admin_favorite', 1)->get()->count();
+        $bin_count = Message::where('admin_status', 1)->get()->count();
 
         if($category == 'all') {
-            $items = Message::where('admin_status', 1)->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 2)->orderBy('id', 'desc');
         }
         elseif($category == 'general') {
-            $items = Message::where('admin_status', 1)->where('category', 'general')->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 2)->where('category', 'general')->orderBy('id', 'desc');
         }
         elseif($category == 'partner') {
-            $items = Message::where('admin_status', 1)->where('category', 'partner')->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 2)->where('category', 'partner')->orderBy('id', 'desc');
         }
-        elseif($category == 'customer') {
-            $items = Message::where('admin_status', 1)->where('category', 'customer')->orderBy('id', 'desc');
+        elseif($category == 'explorer') {
+            $items = Message::where('admin_status', 2)->where('category', 'explorer')->orderBy('id', 'desc');
         }
         elseif($category == 'starred') {
-            $items = Message::where('admin_status', 1)->where('admin_favorite', 1)->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 2)->where('admin_favorite', 1)->orderBy('id', 'desc');
         }
         elseif($category == 'bin') {
-            $items = Message::where('admin_status', 0)->orderBy('id', 'desc');
+            $items = Message::where('admin_status', 1)->orderBy('id', 'desc');
         }
 
         if($text) {
@@ -267,7 +265,7 @@ class MessageController extends Controller
             // $message->admin_status = 0;
             // $message->save();
 
-            if($message->admin_status == 0) {
+            if($message->admin_status == 2) {
                 $message->admin_status = 1;
                 $message->save();
             }
@@ -284,7 +282,7 @@ class MessageController extends Controller
     {
         foreach($request->selected_ids as $id) {
             $message = Message::find($id);
-            $message->admin_status = 1;
+            $message->admin_status = 2;
             $message->save();
         }
 

@@ -1,8 +1,8 @@
-// #region: Toggle password //   
+// #region: Toggle password - Completed //   
     $(".toggle-password").click(function () {
         $(this).toggleClass("bi-eye-slash-fill bi-eye-fill");
 
-        if ($(this).prev().attr("type") == "password") {
+        if($(this).prev().attr("type") == "password") {
             $(this).prev().attr("type", "text");
         }
         else {
@@ -12,7 +12,7 @@
 // #endregion //
 
 
-// #region: Prevent too many clicks //
+// #region: Prevent too many clicks - Completed //
     document.querySelectorAll('form').forEach(function(form) {
         form.addEventListener('submit', function(event) {
             form.querySelectorAll('button, input[type="submit"]').forEach(function(button) {
@@ -109,8 +109,8 @@
 // #endregion //
 
 
-// #region: Sidebar collapse //
-    $('.collapse-icon').on('click', function() {
+// #region: Sidebar collapse - Completed //
+    $('.sidebar-icon').on('click', function() {
         $('.sidebar').toggleClass('active');
         $('.backend-content').toggleClass('full-width');
     });

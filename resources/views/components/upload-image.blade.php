@@ -1,10 +1,6 @@
 @props(['old_name', 'old_value', 'new_name', 'path', 'label'])
 
-@if(isset($label))
-    <label for="image" class="form-label label">Upload {{ $label }} Image</label>
-@else
-    <label for="image" class="form-label label">Upload Image</label>
-@endif
+<label for="image" class="form-label label">Upload {{ $label }}</label>
 
 <div class="drop-area image-drop-area">
     <i class="bi bi-cloud-arrow-up"></i>
@@ -46,15 +42,15 @@
     <script>
         $('.image-close-icon').on('click', function() {
             $(this).parent('.image-preview').prev().val('');
-            $(this).parent('.image-preview').remove();
+            $(this).parent('.image-preview').empty();
         })
 
         $('.image-preview img').on('click', function() {
             let src = $(this).attr('src');
 
-            $(".upload-image-preview").find('img').attr('src', src);
-            $(".upload-image-preview").find('a').attr('href', src);
-            $(".upload-image-preview").modal('show');
+            $(".modal-image-preview").find('img').attr('src', src);
+            $(".modal-image-preview").find('a').attr('href', src);
+            $(".modal-image-preview").modal('show');
         });
     </script>
 @endpush

@@ -21,14 +21,14 @@ class DashboardController extends Controller
         $months = range(1, 12);
 
         // Total customers
-            $total_customers = User::where('role', 'customer')->count();
+            $total_customers = User::where('role', 'explorer')->count();
 
-            $this_month_customers = User::where('role', 'customer')
+            $this_month_customers = User::where('role', 'explorer')
                 ->whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
                 ->count();
 
-            $last_month_customers = User::where('role', 'customer')
+            $last_month_customers = User::where('role', 'explorer')
                 ->whereMonth('created_at', $last_month)
                 ->whereYear('created_at', $last_month_year)
                 ->count();

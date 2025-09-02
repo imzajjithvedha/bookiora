@@ -5,8 +5,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <i class="bi bi-exclamation-triangle-fill triangle-icon"></i>
-                <p class="title raleway">Are you sure?</p>
-                <p class="description">Deleting this {{ $data }} will erase all their data from the system permanently. This action cannot be reserved.</p>
+                <p class="notification-title raleway">Are you sure?</p>
+                <p class="notification-description">Deleting this {{ $data }} will erase all their data from the system permanently. This action cannot be reserved.</p>
 
                 <div class="buttons">
                     <button type="button" class="btn cancel-button" data-bs-dismiss="modal" title="Cancel">Cancel</button>

@@ -13,13 +13,13 @@
                 <h1 class="title raleway">Register Now</h1>
                 <p class="description">Fill out this quick form and get started with Bookiora.</p>
 
-                <form action="{{ route('register') }}" method="POST">
+                <form action="{{ route('register') }}" method="POST" class="form">
                     @csrf
                     <div class="row mb-3 mb-md-4">
                         <div class="col-12 col-sm-6 mb-2 mb-sm-0">
                             <div class="form-check d-flex align-items-center justify-content-sm-center">
-                                <input class="form-check-input radio" type="radio" name="role" id="customer" value="customer" {{ old('role') == 'customer' ? 'checked' : '' }} required>
-                                <label class="form-check-label radio-label" for="customer">
+                                <input class="form-check-input radio" type="radio" name="role" id="explorer" value="explorer" {{ old('role') == 'explorer' ? 'checked' : '' }} required>
+                                <label class="form-check-label radio-label" for="explorer">
                                     Register as a explorer
                                 </label>
                             </div>
@@ -39,13 +39,13 @@
 
                     <div class="row mb-0 mb-md-4">
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
-                            <label for="firstName" class="form-label label">First Name</label>
+                            <label for="firstName" class="form-label label">First Name<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="firstName" name="first_name" value="{{ old('first_name') }}" placeholder="Enter your first name" required>
                             <x-input-error field="first_name"></x-input-error>
                         </div>
 
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
-                            <label for="lastName" class="form-label label">Last Name</label>
+                            <label for="lastName" class="form-label label">Last Name<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="lastName" name="last_name" value="{{ old('last_name') }}" placeholder="Enter your last name" required>
                             <x-input-error field="last_name"></x-input-error>
                         </div>
@@ -53,22 +53,22 @@
 
                     <div class="row mb-0 mb-md-4">
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
-                            <label for="email" class="form-label label">Email Address</label>
+                            <label for="email" class="form-label label">Email Address<span class="asterisk">*</span></label>
                             <input type="text" class="form-control input-field" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email address" required>
                             <x-input-error field="email"></x-input-error>
                         </div>
 
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
-                            <label for="phoneNumber" class="form-label label">Phone Number</label>
-                            <input type="text" class="form-control input-field" id="phoneNumber" name="phone_number" placeholder="Enter your phone number" value="{{ old('phone_number') }}" required>
-                            <x-input-error field="phone_number"></x-input-error>
+                            <label for="phone" class="form-label label">Phone</label>
+                            <input type="text" class="form-control input-field" id="phone" name="phone" placeholder="Enter your phone number" value="{{ old('phone') }}">
+                            <x-input-error field="phone"></x-input-error>
                         </div>
                     </div>
 
                     <div class="row mb-0 mb-md-4">
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
                             <div class="position-relative">
-                                <label for="password" class="form-label label">Password</label>
+                                <label for="password" class="form-label label">Password<span class="asterisk">*</span></label>
                                 <input type="password" class="form-control input-field" id="password" name="password" placeholder="Enter your password" required>
                                 <span class="bi bi-eye-slash-fill toggle-password"></span>
                                 <x-input-error field="password"></x-input-error>
@@ -77,7 +77,7 @@
 
                         <div class="col-12 mb-3 mb-md-0 col-md-6">
                             <div class="position-relative">
-                                <label for="passwordConfirmation" class="form-label label">Confirm Password</label>
+                                <label for="passwordConfirmation" class="form-label label">Confirm Password<span class="asterisk">*</span></label>
                                 <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="Confirm your password" required/>
                                 <span class="bi bi-eye-slash-fill toggle-password"></span>
                                 <x-input-error field="password_confirmation"></x-input-error>

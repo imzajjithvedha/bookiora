@@ -37,7 +37,10 @@ class SubscriptionController extends Controller
     {
         $subscription->delete();
 
-        return redirect()->back()->with('success', 'Successfully deleted!');
+        return redirect()->back()->with([
+            'success' => 'Successfully deleted',
+            'message' => 'This information is removed from the system.'
+        ]);
     }
 
     public function filter(Request $request)

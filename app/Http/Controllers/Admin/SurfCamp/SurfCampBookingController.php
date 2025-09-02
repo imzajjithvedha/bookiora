@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\SurfCamp;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class BookingController extends Controller
+class SurfCampBookingController extends Controller
 {
     private function processData($items)
     {

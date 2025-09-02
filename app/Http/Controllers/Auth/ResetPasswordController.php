@@ -38,26 +38,33 @@ class ResetPasswordController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $user = User::where('email', $request->email)->where('status', 2)->first();
+        if(!$user) {
+            return redirect()->back()->with(
+                [
+                    'error' => "Email not found",
+                    'message' => "Please request again.",
+                ]
+            );
+        }
+
         $reset_password = PasswordResetToken::where('email', $request->email)->orderBy('created_at', 'desc')->first();
 
         if(!$reset_password || $reset_password->token !== $request->token) {
-            return redirect()->back()->with('error', 'Invalid or expired reset token');
+            return redirect()->back()->with([
+                'error' => "Invalid or expired token",
+                'message' => "Please request again.",
+            ]);
         }
 
-        $user = User::where('email', $request->email)->first();
-        if($user) {
-            $user->password = Hash::make($request->password);
-            $user->save();
+        $user->password = Hash::make($request->password);
+        $user->save();
 
-            return redirect()->route('login')->with(
-                [
-                    'success' => "Password Changed",
-                    'message' => "Please login to your account.",
-                ]
-            );
-
-        }
-
-        return redirect()->back()->with('email', 'Email not found');
+        return redirect()->route('login')->with(
+            [
+                'success' => "Password successfully changed",
+                'message' => "Please login to your account.",
+            ]
+        );
     }
 }

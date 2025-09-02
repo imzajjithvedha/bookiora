@@ -1,7 +1,7 @@
-/* #region: Sidebar */
+/* #region: Sidebar - Completed */
     .sidebar {
         position: fixed;
-        margin-top: 100px;
+        margin-top: 80px;
         background-color: var(--color-white);
         height: 90vh;
         width: 0;
@@ -15,7 +15,7 @@
         transition: all 0.3s;
     }
     .sidebar::-webkit-scrollbar {
-        width: 8px;
+        width: 5px;
     }
     .sidebar::-webkit-scrollbar-track {
         background: var(--color-gray-light);
@@ -43,7 +43,7 @@
     }
     .sidebar hr {
         margin: 0;
-        border: 1px solid var(--color-gray-light);
+        border: 1px solid var(--color-gray);
     }
     .sidebar .main-menu .link a {
         color: var(--color-black);
@@ -106,34 +106,54 @@
 /* #endregion */
 
 
-/* #region: Responsive */
-    @media (width <= 1921px) {}
-    @media (width <= 1901px) {}
-    @media (width <= 1851px) {}
-    @media (width <= 1801px) {}
-    @media (width <= 1751px) {}
-    @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
-    @media (width <= 1201px) {}
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 992px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
-    @media (width <= 429px) {}
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
-    @media (width <= 377px) {}
-    @media (width <= 361px) {}
-    @media (width <= 331px) {}
+/* #region: Responsive - Completed */
+    @media (width < 1281px) {
+        .sidebar {
+            margin-top: 60px;
+        }
+        .sidebar .main-menu .link a {
+            font-size: 14px;
+        }
+        .sidebar .main-menu .link a i {
+            font-size: 15px;
+            padding-right: 10px;
+        }
+        .sidebar.active {
+            width: 230px;
+        }
+        .sidebar .main-menu .link .box {
+            height: 52px;
+            margin-right: 10px;
+        }
+        .sidebar .main-menu .link .actual-link {
+            width: 90%;
+        }
+    }
+    @media (width < 768px) {
+        .sidebar .main-menu {
+            margin: 5px 0;
+        }
+        .sidebar .main-menu .link a {
+            font-size: 13px;
+        }
+        .sidebar .main-menu .link .box {
+            height: 43px;
+            margin-right: 8px;
+        }
+        .sidebar.active {
+            width: 200px;
+        }
+        .sidebar .main-menu .link .actual-link {
+            width: 87%;
+            padding: 10px;
+        }
+    }
+    @media (width < 576px) {
+        .sidebar.active {
+            width: 0;
+        }
+        .sidebar {
+            width: 200px;
+        }
+    }
 /* #endregion */

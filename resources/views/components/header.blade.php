@@ -1,4 +1,6 @@
 <div class="navbar-fluid">
+    <i class="bi bi-layout-sidebar-inset sidebar-icon"></i>
+
     <div class="container-lg">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ route('home') }}">
@@ -32,7 +34,6 @@
                     </li>
 
                     @auth()
-                        <!-- In future -->
                         <li class="nav-item dropdown">
                             <div class="profile" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if(auth()->user()->image)
@@ -59,7 +60,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- In future -->
                     @else
                         <li class="nav-item">
                             <a class="nav-link login-button" href="{{ route('login') }}">Login</a>

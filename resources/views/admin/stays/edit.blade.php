@@ -459,7 +459,7 @@
         </form>
     </div>
 
-    <x-upload-image-preview></x-modal-image-preview>
+    <x-image-preview></x-modal-image-preview>
     <x-modal-video-preview></x-modal-video-preview>
 
 @endsection

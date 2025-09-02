@@ -12,14 +12,14 @@ class User extends Authenticatable
 
     protected $guarded = [];
 
-    public function warehouses()
+    public function stays()
     {
-        return $this->hasMany(Warehouse::class);
+        return $this->hasMany(Stay::class);
     }
 
-    public function bookings()
+    public function stayBookings()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(StayBooking::class);
     }
 
     public function messages()
@@ -27,14 +27,9 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function reviews()
+    public function stayReviews()
     {
-        return $this->hasMany(WarehouseReview::class);
-    }
-
-    public function company()
-    {
-        return $this->hasOne(Company::class);
+        return $this->hasMany(StayReview::class);
     }
 
     public function favorites()

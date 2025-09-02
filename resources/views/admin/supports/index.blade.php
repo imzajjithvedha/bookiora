@@ -4,28 +4,24 @@
 
 @section('content')
     <div class="page">
-        <div class="row align-items-center mb-4">
-            <div class="col-8">
-                <p class="title">Supports</p>
+        <div class="row align-items-center mb-3 mb-md-4">
+            <div class="col-12 col-md-8">
+                <p class="title raleway">Supports</p>
                 <p class="description">Manage supports here.</p>
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-12">
-                <form class="filter-form">
-                    <div class="row">
-                        <div class="col-10">
-                            <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
-                        </div>
+        <form class="filter-form mb-3 mb-md-4">
+            <div class="row">
+                <div class="col-12 col-lg-10 mb-2 mb-lg-0">
+                    <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
+                </div>
 
-                        <div class="col-2">
-                            <button type="button" class="form-control input-field raleway reset">⟲ Reset</button>
-                        </div>
-                    </div>
-                </form>
+                <div class="col-12 col-lg-2">
+                    <button type="button" class="form-control input-field raleway reset">⟲ Reset</button>
+                </div>
             </div>
-        </div>
+        </form>
 
         <div class="row">
             <div class="col-12">

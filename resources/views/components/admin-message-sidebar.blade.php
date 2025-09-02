@@ -45,10 +45,10 @@
         </li>
 
         <li class="link">
-            <a href="{{ route('admin.messages.index', 'customer') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'customer' ? 'active' : '' }}">
+            <a href="{{ route('admin.messages.index', 'explorer') }}" class="actual-link {{ Request::segment(2) == 'messages' && Request::segment(3) == 'explorer' ? 'active' : '' }}">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-key"></i>
-                    Customer Inquiry
+                    Explorer Inquiry
                 </div>
 
                 <p class="number">{{ $customer_count }}</p>

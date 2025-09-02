@@ -62,25 +62,27 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:1|max:255',
-            'email' => 'required|email|min:1|max:255|unique:users,email',
-            'display_name' => 'nullable|max:255',
-            'phone' => 'nullable|numeric|unique:users,phone',
+            'name' => 'required|min:3|max:30',
+            'email' => 'required|email|min:3|max:50|unique:users,email',
+            'display_name' => 'nullable|max:15',
+            'phone' => 'nullable|min:8|max:15|regex:/^\+?[0-9]+$/|unique:users,phone',
             'dob' => 'nullable|date',
-            'nationality' => 'nullable|max:255',
+            'nationality' => 'nullable|max:50',
             'gender' => 'nullable|in:male,female,nondisclosure',
-            'address' => 'nullable|max:255',
-            'role' => 'required|in:admin,partner,customer',
+            'address' => 'nullable|max:100',
+            'role' => 'required|in:admin,partner,explorer',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
             'new_image' => 'nullable|max:3072',
             'status' => 'required|in:0,1,2'
+        ], [
+            'new_image' => 'The image must not be greater than 3072 kilobytes.'
         ]);
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
-                'error' => 'Creation Failed!',
-                'message' => 'We couldn\'t apply the changes. Your information has not been updated.'
+                'error' => 'Creation failed',
+                'message' => 'Your information has not been updated.'
             ]);
         }
 
@@ -96,7 +98,7 @@ class UserController extends Controller
         $user = User::create($data);
 
         return redirect()->route('admin.users.index')->with([
-            'success' => 'Update Successful!',
+            'success' => 'Update successful',
             'message' => 'All changes have been successfully updated and saved.'
         ]);
     }
@@ -111,23 +113,25 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:1|max:255',
-            'email' => 'required|email|min:1|max:255|unique:users,email,'.$user->id,
-            'display_name' => 'nullable|max:255',
-            'phone' => 'nullable|numeric|unique:users,phone,'.$user->id,
+            'name' => 'required|min:3|max:30',
+            'email' => 'required|email|min:3|max:50|unique:users,email,'.$user->id,
+            'display_name' => 'nullable|max:15',
+            'phone' => 'nullable|min:8|max:15|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
             'dob' => 'nullable|date',
-            'nationality' => 'nullable|max:255',
+            'nationality' => 'nullable|max:50',
             'gender' => 'nullable|in:male,female,nondisclosure',
-            'address' => 'nullable|max:255',
-            'role' => 'required|in:admin,partner,customer',
+            'address' => 'nullable|max:100',
+            'role' => 'required|in:admin,partner,explorer',
             'new_image' => 'nullable|max:3072',
             'status' => 'required|in:0,1,2'
+        ], [
+            'new_image' => 'The image must not be greater than 3072 kilobytes.'
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
-                'error' => 'Update Failed!',
-                'message' => 'We couldn\'t apply the changes. Your information has not been updated.'
+                'error' => 'Update failed',
+                'message' => 'Your information has not been updated.'
             ]);
         }
 
@@ -140,14 +144,14 @@ class UserController extends Controller
 
         if($request->password) {
             $validator = Validator::make($request->all(), [
-                'password' => 'nullable|min:8',
-                'password_confirmation' => 'nullable|same:password',
+                'password' => 'required|min:8',
+                'password_confirmation' => 'required|same:password',
             ]);
 
             if($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput()->with([
-                    'error' => 'Update Failed!',
-                    'message' => 'We couldn\'t apply the changes. Your information has not been updated.'
+                    'error' => 'Update failed',
+                    'message' => 'Your information has not been updated.'
                 ]);
             }
 
@@ -178,7 +182,7 @@ class UserController extends Controller
         $user->fill($data)->save();
 
         return redirect()->route('admin.users.index')->with([
-            'success' => 'Update Successful!',
+            'success' => 'Update successful',
             'message' => 'All changes have been successfully updated and saved.'
         ]);
     }
@@ -187,7 +191,10 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->back()->with('delete', 'Successfully Deleted!');
+        return redirect()->back()->with([
+            'success' => 'Successfully deleted',
+            'message' => 'This information is removed from the system.'
+        ]);
     }
 
     public function filter(Request $request)

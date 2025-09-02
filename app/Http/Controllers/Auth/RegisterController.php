@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -21,11 +20,11 @@ class RegisterController extends Controller
     public function store(Request $request)
     {     
         $validator = Validator::make($request->all(), [
-            'role' => 'required|in:customer,partner',
-            'first_name' => 'required|min:1|max:255',
-            'last_name' => 'required|min:1|max:255',
-            'email' => 'required|email|min:1|max:255|unique:users,email',
-            'phone_number' => 'required|min:8|max:255|regex:/^\+?[0-9]+$/|unique:users,phone_number',
+            'role' => 'required|in:explorer,partner',
+            'first_name' => 'required|min:3|max:15',
+            'last_name' => 'required|min:3|max:15',
+            'email' => 'required|email|min:3|max:50|unique:users,email',
+            'phone' => 'nullable|min:8|max:15|regex:/^\+?[0-9]+$/|unique:users,phone',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ]);
@@ -34,7 +33,8 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except('password_confirmation');
+        $data = $request->except('first_name', 'last_name', 'password_confirmation');
+        $data['name'] = $request->first_name . ' ' . $request->last_name;
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
 
@@ -42,20 +42,18 @@ class RegisterController extends Controller
             'user' => $user
         ];
 
-        Mail::to($user->email)->send(new AccountRegisterMail($mail));
+        send_email(new AccountRegisterMail($mail, 'user'), $request->email);
+        send_email(new AccountRegisterMail($mail, 'admin'), config('app.admin_emails'));
 
         Auth::login($user);
+
         $request->session()->regenerate();
 
         if($user->role == 'partner') {
-            return redirect()->route('partner.dashboard')->with([
-                'register' => 'Account Created'
-            ]);
+            return redirect()->route('partner.dashboard');
         }
         else {
-            return redirect()->route('customer.dashboard')->with([
-                'register' => 'Account Created'
-            ]);
+            return redirect()->route('explorer.dashboard');
         }
     }
 }

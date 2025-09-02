@@ -40,7 +40,7 @@ class AuthenticationController extends Controller
                 return redirect()->route('partner.dashboard');
             }
             else {
-                return redirect()->route('customer.dashboard');
+                return redirect()->route('explorer.dashboard');
             }
         }
 

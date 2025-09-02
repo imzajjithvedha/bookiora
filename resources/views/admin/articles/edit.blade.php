@@ -52,7 +52,7 @@
         </form>
     </div>
 
-    <x-upload-image-preview></x-modal-image-preview>
+    <x-image-preview></x-modal-image-preview>
 @endsection
 
 @push('after-scripts')

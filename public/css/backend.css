@@ -6,46 +6,42 @@
 
 
 /* #region: Global */
-    .date-picker-x.active {
-        z-index: 10;
-    }
     .navbar-fluid {
         position: fixed;
-        height: 100px;
+        height: 80px;
         display: flex;
         align-items: center;
+        width: 100%;
         z-index: 9;
+        padding: 0 15px;
     }
-    .navbar-fluid .collapse-icon {
+    .navbar-fluid .sidebar-icon {
+        position: absolute;
+        top: 30%;
         display: block;
         color: var(--color-white);
-        font-size: 30px;
+        font-size: 25px;
         cursor: pointer;
+        z-index: 19999;
     }
     .backend-content {
-        padding-top: 130px;
-        padding-bottom: 70px;
+        padding-top: 95px;
+        padding-bottom: 20px;
         padding-left: 320px;
         padding-right: 20px;
-        transition: all 0.1s;
+        transition: all 0.3s;
     }
     .backend-content.full-width {
         padding-left: 0;
-        transition: all 0.1s;
+        transition: all 0.3s;
     }
-    .footer {
-        padding-top: 0;
-        margin-top: 0;
-        position: fixed;
-        bottom: 0;
-    }
-    .footer .copyright {
-        padding: 5px 0;
-    }
+    /* .date-picker-x.active {
+        z-index: 10;
+    } */
 /* #endregion */
 
 
-/* #region: Message sidebar */
+/* #region: Message sidebar - Completed */
     .message-sidebar {
         background-color: var(--color-white);
         padding: 20px;
@@ -108,34 +104,82 @@
 /* #endregion */
 
 
-/* #region: Responsive */
-    @media (width <= 1921px) {}
-    @media (width <= 1901px) {}
-    @media (width <= 1851px) {}
-    @media (width <= 1801px) {}
-    @media (width <= 1751px) {}
-    @media (width <= 1681px) {}
-    @media (width <= 1601px) {}
-    @media (width <= 1537px) {}
-    @media (width <= 1441px) {}
-    @media (width <= 1367px) {}
-    @media (width <= 1301px) {}
-    @media (width <= 1281px) {}
-    @media (width <= 1201px) {}
-    @media (width <= 1151px) {}
-    @media (width <= 1076px) {}
-    @media (width <= 1025px) {}
-    @media (width <= 992px) {}
-    @media (width <= 845px) {}
-    @media (width <= 768px) {}
-    @media (width <= 721px) {}
-    @media (width <= 651px) {}
-    @media (width <= 576px) {}
-    @media (width <= 481px) {}
-    @media (width <= 429px) {}
-    @media (width <= 415px) {}
-    @media (width <= 396px) {}
-    @media (width <= 377px) {}
-    @media (width <= 361px) {}
-    @media (width <= 331px) {}
+/* #region: Responsive - Completed */
+    @media (width < 1281px) {
+        .navbar-fluid {
+            height: 60px;
+        }
+        .navbar-fluid .sidebar-icon {
+            top: 25%;
+        }
+
+        .backend-content {
+            padding-top: 70px;
+            padding-left: 240px;
+            padding-right: 10px;
+        }
+        .backend-content.full-width {
+            padding-left: 10px;
+        }
+
+        .message-sidebar, .inner-page .message-form {
+            padding: 10px;
+        }
+        .message-sidebar .title {
+            font-size: 16px;
+            padding-bottom: 5px;
+        }
+        .message-sidebar .link .actual-link {
+            font-size: 14px;
+        }
+        .message-sidebar .link .actual-link i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .message-sidebar .link .actual-link .number {
+            font-size: 13px;
+        }
+    }
+    @media (width < 1076px) {
+        .navbar .navbar-brand {
+            margin-left: 30px;
+        }
+    }
+    @media (width < 992px) {
+        .message-sidebar, .inner-page .message-form {
+            padding: 15px;
+        }
+    }
+    @media (width < 768px) {
+        .backend-content {
+            padding-left: 200px;
+            padding-right: 0px;
+        }
+        .backend-content.full-width {
+            padding-left: 0;
+        }
+        
+        .message-sidebar .title {
+            font-size: 14px;
+            padding-bottom: 0px;
+        }
+        .message-sidebar .link .actual-link {
+            font-size: 13px;
+            padding: 10px 5px;
+        }
+        .message-sidebar .link .actual-link i {
+            font-size: 14px;
+        }
+    }
+    @media (width < 576px) {
+        .backend-content {
+            padding-left: 0;
+        }
+    }
+    @media (width < 481px) {
+        .navbar-fluid .sidebar-icon {
+            top: 30%;
+            font-size: 20px;
+        }
+    }
 /* #endregion */

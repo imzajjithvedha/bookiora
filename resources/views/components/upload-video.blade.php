@@ -1,10 +1,6 @@
 @props(['old_name', 'old_value', 'new_name', 'path', 'class'])
 
-@if(isset($label))
-    <label for="video" class="form-label label">Upload {{ $label }} Video</label>
-@else
-    <label for="video" class="form-label label">Upload Video</label>
-@endif
+<label for="video" class="form-label label">Upload {{ $label }}</label>
 
 <div class="drop-area video-drop-area">
     <i class="bi bi-cloud-arrow-up"></i>
