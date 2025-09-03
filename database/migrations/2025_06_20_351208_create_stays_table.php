@@ -24,18 +24,18 @@ return new class extends Migration
             $table->string('country');
 
             $table->enum('star_rating', ['na', '1', '2', '3', '4', '5']);
-            $table->json('facilities')->nullable();
+            $table->text('facilities')->nullable();
             $table->enum('breakfast', ['yes', 'no']);
             $table->enum('breakfast_pay', ['yes', 'no'])->nullable();
             $table->decimal('breakfast_cost', 10, 2)->nullable();
-            $table->json('breakfast_types')->nullable();
+            $table->text('breakfast_types')->nullable();
             $table->enum('parking', ['yes_free', 'yes_paid', 'no']);
             $table->enum('parking_reserve', ['yes', 'no'])->nullable();
             $table->enum('parking_location', ['onsite', 'offsite'])->nullable();
             $table->enum('parking_type', ['private', 'public'])->nullable();
             $table->decimal('parking_cost', 10, 2)->nullable();
             $table->enum('parking_cost_type', ['per_hour', 'per_day', 'per_stay'])->nullable();
-            $table->json('staff_languages')->nullable();
+            // $table->text('staff_languages')->nullable();
 
             $table->string('check_in_time_from');
             $table->string('check_in_time_until');
@@ -46,10 +46,10 @@ return new class extends Migration
             $table->enum('allow_pets_charges', ['yes', 'no'])->nullable();
 
             $table->string('thumbnail');
-            $table->json('images')->nullable();
+            $table->text('images')->nullable();
 
             $table->boolean('is_new')->default(1);
-            $table->boolean('status')->default(1);
+            $table->boolean('status')->default(2);
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

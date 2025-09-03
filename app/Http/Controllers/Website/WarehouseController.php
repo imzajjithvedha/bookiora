@@ -10,7 +10,7 @@ use App\Mail\BookingMail;
 use App\Mail\LandlordBookingMail;
 use App\Mail\ReportMail;
 use App\Mail\ExpertMail;
-use App\Models\Booking;
+use App\Models\StayBooking;
 use App\Models\Favorite;
 use App\Models\HomepageContent;
 use App\Models\Message;

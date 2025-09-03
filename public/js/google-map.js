@@ -1,101 +1,120 @@
-const apiKey = document.currentScript.dataset.mapsKey;
-const nativeAttachShadow = Element.prototype.attachShadow;
-
-Element.prototype.attachShadow = function(init) {
-    if(this.localName === 'gmp-place-autocomplete') {
-        const root = nativeAttachShadow.call(this, { ...init, mode: 'open' });
-
-        const style = document.createElement('style');
-        style.textContent = `
-            .widget-container {
-                border: 0 !important;
-                background: transparent !important;
-                box-shadow: none !important;
-            }
-            .focus-ring {
-                border: 0 !important;
-            }
-            :host {
-                border: 0 !important;
-                color-scheme: none!important;
-            }
-        `;
-        root.append(style);
-        return root;
-    }
-
-    return nativeAttachShadow.call(this, init);
-};
-
-(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-    key: apiKey,
-    v: "weekly"
-});
+let map;
+let marker;
+let infoWindow;
+let center = { lat: 8, lng: 81.5 };
 
 async function initMap() {
-    await google.maps.importLibrary("places");
-    const { Geocoder } = await google.maps.importLibrary("geocoding");
+    const [{ Map }, { AdvancedMarkerElement }] = await Promise.all([
+        google.maps.importLibrary("marker"),
+        google.maps.importLibrary("places")
+    ]);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center,
+        zoom: 7,
+        mapId: '4504f8b37365c3d0',
+        mapTypeControl: false,
+    });
 
     const placeAutocomplete = new google.maps.places.PlaceAutocompleteElement();
-    document.getElementById('place-autocomplete-card').appendChild(placeAutocomplete);
+    placeAutocomplete.id = 'place-autocomplete-input';
+    placeAutocomplete.locationBias = center;
+    const card = document.getElementById('place-autocomplete-card');
 
-    const pickComponent = (components, types) =>
-        (components || []).find(c => c.types.some(t => types.includes(t))) || null;
+    card.appendChild(placeAutocomplete);
+
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+
+    marker = new google.maps.marker.AdvancedMarkerElement({
+        map,
+    });
+    infoWindow = new google.maps.InfoWindow({});
+
+    // #region: Get the marker on the edit page //
+        const existingLat = parseFloat($('#latitude').val());
+        const existingLng = parseFloat($('#longitude').val());
+
+        if(existingLat && existingLng) {
+            const location = { lat: existingLat, lng: existingLng };
+            map.setCenter(location);
+            map.setZoom(17);
+            marker.position = location;
+
+            const name = $('#name').val();
+            const address = $('#address').val();
+
+            const content = `
+                <div id="info-window-content" class="info-window-content">
+                    <span id="place-displayname" class="title">${name}</span>
+                    <span id="place-address" class="address">${address}</span>
+                </div>
+            `;
+
+            updateInfoWindow(content, location);
+        }
+    // #endregion //
 
     placeAutocomplete.addEventListener('gmp-select', async ({ placePrediction }) => {
         const place = placePrediction.toPlace();
-        await place.fetchFields({
-            fields: ['displayName', 'formattedAddress', 'addressComponents', 'location']
-    });
+        await place.fetchFields({ fields: ['displayName', 'formattedAddress', 'location', 'addressComponents'] });
 
-    document.getElementById('address_name').value = place.displayName || '';
-    document.getElementById('address_en').value = place.formattedAddress || '';
-
-    const cityEN = pickComponent(
-        place.addressComponents,
-        [
-            'locality',
-            'postal_town',
-            'administrative_area_level_2', 'administrative_area_level_1',
-            'sublocality_level_1'
-        ]
-    );
-
-    document.getElementById('city_en').value = cityEN?.longText || cityEN?.long_name || '';
-
-    document.getElementById('latitude' ).value = place.location.lat().toFixed(7);
-    document.getElementById('longitude').value = place.location.lng().toFixed(7);
-
-
-    const geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode(
-        {
-            location: place.location,
-            language: 'ar'
-        },
-        (results, status) => {
-            if(status === 'OK' && results?.length) {
-                const first = results[0];
-
-                document.getElementById('address_ar').value = first.formatted_address || '';
-
-                const cityAR = (first.address_components || []).find(comp =>
-                    comp.types.some(type =>
-                        [
-                            'locality', 'postal_town', 'administrative_area_level_2', 'administrative_area_level_1', 'sublocality_level_1'
-                        ].includes(type)
-                    )
-                );
-
-                document.getElementById('city_ar').value = cityAR?.long_name || '';
-            }
-            else {
-                console.error('Geocoder failed:', status);
-            }
+        if(place.viewport) {
+            map.fitBounds(place.viewport);
         }
-        );
+        else {
+            map.setCenter(place.location);
+            map.setZoom(17);
+        }
+
+        let content = `
+            <div id="info-window-content" class="info-window-content">
+                <span id="place-displayname" class="title">${place.displayName}</span>
+                <span id="place-address" class="address">
+                    ${place.formattedAddress}
+                </span>
+            </div>
+        `;
+
+        updateInfoWindow(content, place.location);
+        marker.position = place.location;
+
+        populateFields(place);
     });
+}
+
+function updateInfoWindow(content, center) {
+    infoWindow.setContent(content);
+    infoWindow.setPosition(center);
+    infoWindow.open({
+        map,
+        anchor: marker,
+        shouldFocus: false,
+    });
+}
+
+function populateFields(place) {
+    const addressComponents = place.addressComponents || [];
+
+    const getAddressComponent = (type, short = false) => {
+        const component = addressComponents.find(c => c.types.includes(type));
+        if(!component) return '';
+        return short ? (component.shortText || component.short_name || '') : (component.longText || component.long_name || '');
+    };
+
+    const addressLine = [getAddressComponent('street_number'), getAddressComponent('route')].filter(Boolean).join(' ').trim() || place.formattedAddress || '';
+    const city = getAddressComponent('locality') || getAddressComponent('postal_town') || getAddressComponent('sublocality') || '';
+    const state = getAddressComponent('administrative_area_level_1', true) || getAddressComponent('administrative_area_level_1');
+    const postalCode = getAddressComponent('postal_code') || '';
+    const country = getAddressComponent('country') || '';
+    const latitude = typeof place.location.lat === 'function' ? place.location.lat() : place.location.lat;
+    const longitude = typeof place.location.lng === 'function' ? place.location.lng() : place.location.lng;
+
+    $('#address').val(addressLine);
+    $('#city').val(city);
+    $('#post_code').val(postalCode);
+    $('#country').val(country).trigger('change');
+    $('#latitude').val(latitude);
+    $('#longitude').val(longitude);
 }
 
 initMap();

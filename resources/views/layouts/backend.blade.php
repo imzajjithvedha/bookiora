@@ -40,6 +40,7 @@
             <script src="{{ asset('js/date-picker-x.js') }}"></script>
             <script src="{{ asset('js/chart.js') }}"></script>
             <script src="{{ asset('js/drag-drop-image.js') }}"></script>
+            <script src="{{ asset('js/drag-drop-images.js') }}"></script>
             <script src="{{ asset('js/global.js') }}"></script>
         @stack('after-scripts')
     </body>

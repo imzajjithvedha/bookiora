@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\SurfCamp;
 
 use App\Http\Controllers\Controller;
-use App\Models\Booking;
+use App\Models\StayBooking;
 use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;

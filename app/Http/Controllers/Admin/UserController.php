@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -67,7 +68,7 @@ class UserController extends Controller
             'display_name' => 'nullable|max:15',
             'phone' => 'nullable|min:8|max:15|regex:/^\+?[0-9]+$/|unique:users,phone',
             'dob' => 'nullable|date',
-            'nationality' => 'nullable|max:50',
+            'nationality' => ['nullable', Rule::in(config('countries.list'))],
             'gender' => 'nullable|in:male,female,nondisclosure',
             'address' => 'nullable|max:100',
             'role' => 'required|in:admin,partner,explorer',
@@ -98,7 +99,7 @@ class UserController extends Controller
         $user = User::create($data);
 
         return redirect()->route('admin.users.index')->with([
-            'success' => 'Update successful',
+            'success' => 'Create successful',
             'message' => 'All changes have been successfully updated and saved.'
         ]);
     }
@@ -118,7 +119,7 @@ class UserController extends Controller
             'display_name' => 'nullable|max:15',
             'phone' => 'nullable|min:8|max:15|regex:/^\+?[0-9]+$/|unique:users,phone,'.$user->id,
             'dob' => 'nullable|date',
-            'nationality' => 'nullable|max:50',
+            'nationality' => ['nullable', Rule::in(config('countries.list'))],
             'gender' => 'nullable|in:male,female,nondisclosure',
             'address' => 'nullable|max:100',
             'role' => 'required|in:admin,partner,explorer',

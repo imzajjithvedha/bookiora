@@ -94,7 +94,7 @@
                 <a href="{{ route('admin.stays.index') }}" class="{{ Request::segment(2) == 'stays' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-houses"></i>
+                        <i class="bi bi-buildings"></i>
                         Stays
                         <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : '' }}</p>
                     </div>
@@ -105,9 +105,9 @@
                 <a href="{{ route('admin.stays.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-ui-checks"></i>
+                        <i class="bi bi-journal-medical"></i>
                         Bookings
-                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
+                        <p class="new-count">{{ App\Models\StayBooking::where('is_admin_new', 1)->count() != 0 ? App\Models\StayBooking::where('is_admin_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -120,7 +120,7 @@
                 <a href="{{ route('admin.surf-camps.index') }}" class="{{ Request::segment(2) == 'surf-camps' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-houses"></i>
+                        <i class="bi bi-tsunami"></i>
                         Surf Camps
                         <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : '' }}</p>
                     </div>
@@ -131,9 +131,9 @@
                 <a href="{{ route('admin.surf-camps.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-ui-checks"></i>
+                        <i class="bi bi-journal-richtext"></i>
                         Bookings
-                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
+                        <p class="new-count">{{ App\Models\StayBooking::where('is_admin_new', 1)->count() != 0 ? App\Models\StayBooking::where('is_admin_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -146,7 +146,7 @@
                 <a href="{{ route('admin.vehicle-rentals.index') }}" class="{{ Request::segment(2) == 'vehicle-rentals' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-houses"></i>
+                        <i class="bi bi-car-front"></i>
                         Vehicle Rentals
                         <p class="new-count">{{ App\Models\Stay::where('is_new', 1)->count() != 0 ? App\Models\Stay::where('is_new', 1)->count() : '' }}</p>
                     </div>
@@ -157,9 +157,9 @@
                 <a href="{{ route('admin.vehicle-rentals.bookings.index') }}" class="{{ Request::segment(2) == 'bookings' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-ui-checks"></i>
+                        <i class="bi bi-journal-bookmark"></i>
                         Bookings
-                        <p class="new-count">{{ App\Models\Booking::where('is_admin_new', 1)->count() != 0 ? App\Models\Booking::where('is_admin_new', 1)->count() : ''; }}</p>
+                        <p class="new-count">{{ App\Models\StayBooking::where('is_admin_new', 1)->count() != 0 ? App\Models\StayBooking::where('is_admin_new', 1)->count() : ''; }}</p>
                     </div>
                 </a>
             </li>
@@ -172,7 +172,7 @@
                 <a href="{{ route('admin.articles.index') }}" class="{{ Request::segment(2) == 'articles' ? 'active' : '' }}">
                     <div class="box"></div>
                     <div class="actual-link">
-                        <i class="bi bi-newspaper"></i>
+                        <i class="bi bi-journals"></i>
                         Articles
                     </div>
                 </a>

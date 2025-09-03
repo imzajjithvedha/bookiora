@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    <x-image-preview></x-modal-image-preview>
+    <x-modal-image-preview></x-modal-image-preview>
 @endsection
 
 @push('after-scripts')

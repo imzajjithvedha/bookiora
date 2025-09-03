@@ -1,10 +1,6 @@
 @props(['old_name', 'old_value', 'new_name', 'path', 'label'])
 
-@if(isset($label))
-    <label for="image" class="form-label label">Upload {{ $label }} Image</label>
-@else
-    <label for="image" class="form-label label">Upload Image</label>
-@endif
+<label for="image" class="form-label label">Upload {{ $label }}</label>
 
 <div class="drop-area image-drop-area">
     <i class="bi bi-cloud-arrow-up"></i>
@@ -30,6 +26,22 @@
     <div class="image-preview">
         @if($old_value)
             <img src="{{ asset('storage/backend/' . $path . '/' . $old_value) }}">
+
+            <a href="{{ asset('storage/backend/' . $path . '/' . $old_value) }}" class="download-icon" title="download" download>
+                <i class="bi bi-arrow-bar-down"></i>
+            </a>
         @endif
     </div>
 </div>
+
+@push('after-scripts')
+    <script>
+        $('.image-preview img').on('click', function() {
+            let src = $(this).attr('src');
+
+            $(".modal-image-preview").find('img').attr('src', src);
+            $(".modal-image-preview").find('a').attr('href', src);
+            $(".modal-image-preview").modal('show');
+        });
+    </script>
+@endpush

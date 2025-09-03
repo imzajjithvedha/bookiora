@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Booking;
+use App\Models\StayBooking;
 use App\Models\User;
 use App\Models\Stay;
 use Carbon\Carbon;
@@ -130,14 +130,14 @@ class DashboardController extends Controller
         // Total stays
 
         // Total income
-            $total_income = Booking::where('status', 1)->sum('total_rent');
+            $total_income = StayBooking::where('status', 1)->sum('total_rent');
 
-            $this_month_income = Booking::where('status', 1)
+            $this_month_income = StayBooking::where('status', 1)
                 ->whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
                 ->sum('total_rent');
 
-            $last_month_income = Booking::where('status', 1)
+            $last_month_income = StayBooking::where('status', 1)
                 ->whereMonth('created_at', $last_month)
                 ->whereYear('created_at', $last_month_year)
                 ->sum('total_rent');
@@ -167,13 +167,13 @@ class DashboardController extends Controller
         // Total income
 
         // Revenue chart
-            $current_year_income = Booking::selectRaw('MONTH(created_at) as month, SUM(total_rent) as total')
+            $current_year_income = StayBooking::selectRaw('MONTH(created_at) as month, SUM(total_rent) as total')
             ->where('status', 1)
             ->whereYear('created_at', $current_year)
             ->groupBy('month')
             ->pluck('total', 'month');
 
-            $last_year_income = Booking::selectRaw('MONTH(created_at) as month, SUM(total_rent) as total')
+            $last_year_income = StayBooking::selectRaw('MONTH(created_at) as month, SUM(total_rent) as total')
             ->where('status', 1)
             ->whereYear('created_at', $last_year)
             ->groupBy('month')
@@ -244,24 +244,24 @@ class DashboardController extends Controller
         // Users chart
 
         // Bookings chart
-            $current_year_bookings = Booking::selectRaw('MONTH(created_at) as month, COUNT(id) as total')
+            $current_year_bookings = StayBooking::selectRaw('MONTH(created_at) as month, COUNT(id) as total')
             ->where('status', 1)
             ->whereYear('created_at', $current_year)
             ->groupBy('month')
             ->pluck('total', 'month');
 
-            $last_year_bookings = Booking::selectRaw('MONTH(created_at) as month, COUNT(id) as total')
+            $last_year_bookings = StayBooking::selectRaw('MONTH(created_at) as month, COUNT(id) as total')
             ->where('status', 1)
             ->whereYear('created_at', $last_year)
             ->groupBy('month')
             ->pluck('total', 'month');
 
-            $this_month_bookings = Booking::where('status', 1)
+            $this_month_bookings = StayBooking::where('status', 1)
                 ->whereMonth('created_at', $current_month)
                 ->whereYear('created_at', $current_year)
                 ->count();
 
-            $last_month_bookings = Booking::where('status', 1)
+            $last_month_bookings = StayBooking::where('status', 1)
                 ->whereMonth('created_at', $last_month)
                 ->whereYear('created_at', $last_month_year)
                 ->count();

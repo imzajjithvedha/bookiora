@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class StayBooking extends Model
 {
     protected $guarded = [];
 
-    public function warehouse()
+    public function stays()
     {
-        return $this->belongsTo(Warehouse::class);
+        return $this->belongsTo(Stay::class);
     }
 
     public function user()

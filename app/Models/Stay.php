@@ -15,7 +15,7 @@ class Stay extends Model
 
     public function bookings()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(StayBooking::class);
     }
 
     public function reviews()

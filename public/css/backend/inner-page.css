@@ -49,6 +49,8 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 25px;
+        border: 1px dashed var(--color-gray-light);
+        padding: 10px;
     }
     .inner-page .form .form-check {
         display: flex;
@@ -234,6 +236,7 @@
     .inner-page .drop-area .condition {
         font-size: 14px;
         color: var(--color-gray);
+        text-align: center;
     }
     .inner-page .drop-area.highlight {
         border: 1px solid var(--color-red);
@@ -275,20 +278,48 @@
 /* #endregion */
 
 
-/* #region: Map */
-    /* .inner-page .place-autocomplete-card {
-        background-color: var(--white);
-        border-radius: 0;
-        height: 60px;
-        font-size: 15px;
-        color: var(--medium_gray);
+/* #region: Map - Completed */
+    .inner-page #map {
+        height: 500px;
     }
-    .inner-page .map-address {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--medium_gray);
-        margin-bottom: 10px!important;
-    } */
+    .inner-page #place-autocomplete-card {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin: 10px;
+        padding: 5px;
+        font-family: Roboto, sans-serif;
+        font-size: large;
+        font-weight: bold;
+    }
+    .info-window-content {
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 250px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .gm-style .gm-style-iw-c {
+        padding: 0!important;
+    }
+    .gm-style .gm-style-iw-d {
+        padding-left: 15px;
+        padding-top: 10px;
+    }
+    .gm-style-iw-chr {
+        display: none;
+    }
+    .info-window-content .title {
+        font-weight: bold;
+        font-size: 17px;
+        color: var(--color-bg-dark-alt);
+    }
+    .info-window-content .address {
+        font-size: 14px;
+        color: var(--color-bg-dark);
+    }
 /* #endregion */
 
 
@@ -530,6 +561,13 @@
         .inner-page .message-form .chat-box .left-single-message .time, .inner-page .message-form .chat-box .right-single-message .time {
             font-size: 11px;
         }
+
+        .inner-page #map {
+            height: 300px;
+        }
+        .inner-page .form .checks {
+            gap: 20px;
+        }
     }
     @media (width < 992px) {
         .modal-image-preview .modal-body .modal-image, .modal-video-preview .modal-body .modal-video {
@@ -550,7 +588,7 @@
             font-size: 13px;
         }
         .inner-page .form .label {
-            font-size: 13px;
+            font-size: 14px;
         }
         .inner-page .form .input-field {
             height: 45px;
@@ -602,6 +640,15 @@
             width: 100%;
             gap: 10px;
         }
+
+        .inner-page .form .checks {
+            gap: 15px;
+        }
+    }
+    @media (width < 415px) {
+        .inner-page #place-autocomplete-card {
+            width: 250px;
+        }
     }
     @media (width < 377px) {
         .inner-page .form .radios {
@@ -639,21 +686,17 @@
             font-size: 13px;
             margin-bottom: 5px !important;
         } */
-
-        /* .inner-page .form .textarea {
-            height: initial;
-        } */
     }
     @media (width <= 1025px) {
-        .inner-page .form .section .add-row-button, .inner-page .form .add-row-button {
+        /* .inner-page .form .section .add-row-button, .inner-page .form .add-row-button {
             font-size: 12px;
         }
         .inner-page .form .section .add-row-button i, .inner-page .form .add-row-button i {
             font-size: 12px;
-        }
+        } */
     }
     @media (width <= 768px) {
-        .inner-page .inner-page-top-title {
+        /* .inner-page .inner-page-top-title {
             font-size: 18px;
         }
         .inner-page .inner-page-top-description {
@@ -668,14 +711,14 @@
         .inner-page .inner-page-title {
             font-size: 14px;
             padding-bottom: 2px;
-        }
+        } */
     }
     @media (width <= 429px) {
-        .inner-page .nav-pills {
+        /* .inner-page .nav-pills {
             overflow-x: auto;
             flex-wrap: nowrap;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-        }
+        } */
     }
 /* #endregion */

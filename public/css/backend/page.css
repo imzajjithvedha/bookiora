@@ -250,13 +250,13 @@
         &:hover {
             text-decoration: underline!important;
         }
-    }
+    } */
     .page .table-container .table .table-image {
         width: 100px;
         height: 100px;
         object-fit: cover;
         border-radius: 50%;
-    } */
+    }
 /* #endregion */
 
 
