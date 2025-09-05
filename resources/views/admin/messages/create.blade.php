@@ -29,7 +29,7 @@
                             <div class="col-12 col-lg-6 mb-3 mb-lg-4">
                                 <label for="user_id" class="form-label label">User<span class="asterisk">*</span></label>
                                 <select class="form-select input-field js-single" id="user_id" name="user_id" required>
-                                    <option value="">Select User</option>
+                                    <option value="">Select user</option>
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                                     @endforeach
@@ -40,7 +40,7 @@
                             <div class="col-12 col-lg-6 mb-3 mb-lg-4">
                                 <label for="category" class="form-label label">Category<span class="asterisk">*</span></label>
                                 <select class="form-select input-field js-single" id="category" name="category" required>
-                                    <option value="">Select Category</option>
+                                    <option value="">Select category</option>
                                     <option value="general" {{ old('category') == 'general' ? 'selected' : '' }}>General Inquiry</option>
                                     <option value="partner" {{ old('category') == 'partner' ? 'selected' : '' }}>Partner Inquiry</option>
                                     <option value="explorer" {{ old('category') == 'explorer' ? 'selected' : '' }}>Explorer Inquiry</option>

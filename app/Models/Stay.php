@@ -13,6 +13,11 @@ class Stay extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function rooms()
+    {
+        return $this->hasMany(StayRoom::class);
+    }
+
     public function bookings()
     {
         return $this->hasMany(StayBooking::class);

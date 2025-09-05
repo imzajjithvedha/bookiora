@@ -21,7 +21,7 @@
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="user_id" class="form-label label">User<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="user_id" name="user_id" required>
-                        <option value="">Select User</option>
+                        <option value="">Select user</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                         @endforeach
@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="apartment_floor_number" class="form-label label">Apartment or Floor Number</label>
-                    <input type="text" class="form-control input-field" id="apartment_floor_number" name="apartment_floor_number" placeholder="Apartment or Floor Number" value="{{ old('apartment_floor_number') }}">
+                    <label for="apartment_floor_number" class="form-label label">Apartment or floor number</label>
+                    <input type="text" class="form-control input-field" id="apartment_floor_number" name="apartment_floor_number" placeholder="Apartment or floor number" value="{{ old('apartment_floor_number') }}">
                     <x-input-error field="apartment_floor_number"></x-input-error>
                 </div>
 
@@ -55,24 +55,23 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="post_code" class="form-label label">Post Code<span class="asterisk">*</span></label>
-                    <input type="text" class="form-control input-field" id="post_code" name="post_code" placeholder="Post Code" value="{{ old('post_code') }}" required>
+                    <label for="post_code" class="form-label label">Post code<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control input-field" id="post_code" name="post_code" placeholder="Post code" value="{{ old('post_code') }}" required>
                     <x-input-error field="post_code"></x-input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <label for="country" class="form-label label">Country<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="country" name="country">
-                        <option value="">Select Country</option>
                         <x-countries-list :data="old('country')"></x-countries-list>
                     </select>
                     <x-input-error field="country"></x-input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="star_rating" class="form-label label">Star Rating<span class="asterisk">*</span></label>
+                    <label for="star_rating" class="form-label label">Star rating<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="star_rating" name="star_rating" required>
-                        <option value="">Select Star Rating</option>
+                        <option value="">Select star rating</option>
                         <option value="na" {{ old('star_rating') == 'na' ? "selected" : "" }}>Not Available</option>
                         <option value="1" {{ old('star_rating') == '1' ? "selected" : "" }}>1</option>
                         <option value="2" {{ old('star_rating') == '2' ? "selected" : "" }}>2</option>
@@ -84,7 +83,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="breakfast" class="form-label label">Breakfast (Do you serve guests breakfast?)<span class="asterisk">*</span></label>
+                    <label for="breakfast" class="form-label label">Do you serve guests breakfast?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="breakfast" name="breakfast" required>
                         <option value="">Select</option>
                         <option value="yes" {{ old('breakfast') == 'yes' ? "selected" : "" }}>Yes</option>
@@ -94,7 +93,7 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-md-4 d-none breakfast-types">
-                    <label for="breakfast_types" class="form-label label">Breakfast Types</label>
+                    <label for="breakfast_types" class="form-label label">Breakfast types</label>
                     <div class="checks">
                         <x-breakfast-types-list :data="old('breakfast_types')"></x-breakfast-types-list>
                     </div>
@@ -102,7 +101,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none breakfast-pay">
-                    <label for="breakfast_pay" class="form-label label">Breakfast Pay (Is breakfast included in the price guests pay?)<span class="asterisk">*</span></label>
+                    <label for="breakfast_pay" class="form-label label">Is breakfast included in the price guests pay?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="breakfast_pay" name="breakfast_pay" required>
                         <option value="">Select</option>
                         <option value="yes" {{ old('breakfast_pay') == 'yes' ? "selected" : "" }}>Yes</option>
@@ -112,24 +111,24 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none breakfast-cost">
-                    <label for="breakfast_cost" class="form-label label">Breakfast Cost (Price per person, per day)<span class="asterisk">*</span></label>
-                    <input type="number" class="form-control input-field" id="breakfast_cost" name="breakfast_cost" placeholder="Breakfast Cost" value="{{ old('breakfast_cost') }}" required>
+                    <label for="breakfast_cost" class="form-label label">Breakfast cost (Price per person, per day)<span class="asterisk">*</span></label>
+                    <input type="number" class="form-control input-field" id="breakfast_cost" name="breakfast_cost" placeholder="Breakfast cost" value="{{ old('breakfast_cost') }}" min="0" step="0.01" required>
                     <x-input-error field="breakfast_cost"></x-input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="parking" class="form-label label">Parking (Is parking available to guests?)<span class="asterisk">*</span></label>
+                    <label for="parking" class="form-label label">Is parking available to guests?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="parking" name="parking" required>
                         <option value="">Select</option>
-                        <option value="yes_free" {{ old('parking') == 'yes_free' ? "selected" : "" }}>Yes, Free</option>
-                        <option value="yes_paid" {{ old('parking') == 'yes_paid' ? "selected" : "" }}>Yes, Paid</option>
+                        <option value="yes_free" {{ old('parking') == 'yes_free' ? "selected" : "" }}>Yes, free</option>
+                        <option value="yes_paid" {{ old('parking') == 'yes_paid' ? "selected" : "" }}>Yes, paid</option>
                         <option value="no" {{ old('parking') == 'no' ? "selected" : "" }}>No</option>
                     </select>
                     <x-input-error field="parking"></x-input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none parking-reserve">
-                    <label for="parking_reserve" class="form-label label">Parking Reserve (Do they need to reserve a parking spot?)<span class="asterisk">*</span></label>
+                    <label for="parking_reserve" class="form-label label">Do they need to reserve a parking spot?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="parking_reserve" name="parking_reserve" required>
                         <option value="">Select</option>
                         <option value="yes" {{ old('parking_reserve') == 'yes' ? "selected" : "" }}>Reservation needed</option>
@@ -139,17 +138,17 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none parking-location">
-                    <label for="parking_location" class="form-label label">Parking Location (Where is the parking located?)<span class="asterisk">*</span></label>
+                    <label for="parking_location" class="form-label label">Where is the parking located?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="parking_location" name="parking_location" required>
                         <option value="">Select</option>
-                        <option value="onsite" {{ old('parking_location') == 'onsite' ? "selected" : "" }}>On Site</option>
-                        <option value="offsite" {{ old('parking_location') == 'offsite' ? "selected" : "" }}>Off Site</option>
+                        <option value="onsite" {{ old('parking_location') == 'onsite' ? "selected" : "" }}>On site</option>
+                        <option value="offsite" {{ old('parking_location') == 'offsite' ? "selected" : "" }}>Off site</option>
                     </select>
                     <x-input-error field="parking_location"></x-input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none parking-type">
-                    <label for="parking_type" class="form-label label">Parking Type (What type of parking is it?)<span class="asterisk">*</span></label>
+                    <label for="parking_type" class="form-label label">What type of parking is it?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="parking_type" name="parking_type" required>
                         <option value="">Select</option>
                         <option value="private" {{ old('parking_type') == 'private' ? "selected" : "" }}>Private</option>
@@ -159,18 +158,18 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none parking-cost">
-                    <label for="parking_cost" class="form-label label">Parking Cost (How much does parking cost?)<span class="asterisk">*</span></label>
-                    <input type="number" class="form-control input-field" id="parking_cost" name="parking_cost" placeholder="Parking Cost" value="{{ old('parking_cost') }}" required>
+                    <label for="parking_cost" class="form-label label">How much does parking cost?<span class="asterisk">*</span></label>
+                    <input type="number" class="form-control input-field" id="parking_cost" name="parking_cost" placeholder="Parking cost" value="{{ old('parking_cost') }}" min="0" step="0.01" required>
                     <x-input-error field="parking_cost"></x-input-error>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none parking-cost-type">
-                    <label for="parking_cost_type" class="form-label label">Parking Cost Type<span class="asterisk">*</span></label>
+                    <label for="parking_cost_type" class="form-label label">Parking cost type<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="parking_cost_type" name="parking_cost_type" required>
                         <option value="">Select</option>
-                        <option value="per_hour" {{ old('parking_cost_type') == 'per_hour' ? "selected" : "" }}>Per Hour</option>
-                        <option value="per_day" {{ old('parking_cost_type') == 'per_day' ? "selected" : "" }}>Per Day</option>
-                        <option value="per_stay" {{ old('parking_cost_type') == 'per_stay' ? "selected" : "" }}>Per Stay</option>
+                        <option value="per_hour" {{ old('parking_cost_type') == 'per_hour' ? "selected" : "" }}>Per hour</option>
+                        <option value="per_day" {{ old('parking_cost_type') == 'per_day' ? "selected" : "" }}>Per day</option>
+                        <option value="per_stay" {{ old('parking_cost_type') == 'per_stay' ? "selected" : "" }}>Per stay</option>
                     </select>
                     <x-input-error field="parking_cost_type"></x-input-error>
                 </div>
@@ -490,7 +489,7 @@
                 </div> -->
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="check_in_time_from" class="form-label label">Check In From<span class="asterisk">*</span></label>
+                    <label for="check_in_time_from" class="form-label label">Check in from<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="check_in_time_from" name="check_in_time_from">
                         <x-times-list :data="old('check_in_time_from')"></x-times-list>
                     </select>
@@ -498,7 +497,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="check_in_time_until" class="form-label label">Check In Until<span class="asterisk">*</span></label>
+                    <label for="check_in_time_until" class="form-label label">Check in until<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="check_in_time_until" name="check_in_time_until">
                         <x-times-list :data="old('check_in_time_until')"></x-times-list>
                     </select>
@@ -506,7 +505,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="check_out_time_from" class="form-label label">Check Out From<span class="asterisk">*</span></label>
+                    <label for="check_out_time_from" class="form-label label">Check out from<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="check_out_time_from" name="check_out_time_from">
                         <x-times-list :data="old('check_out_time_from')"></x-times-list>
                     </select>
@@ -514,7 +513,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="check_out_time_until" class="form-label label">Check Out Until<span class="asterisk">*</span></label>
+                    <label for="check_out_time_until" class="form-label label">Check out until<span class="asterisk">*</span></label>
                     <select class="form-select js-single input-field" id="check_out_time_until" name="check_out_time_until">
                         <x-times-list :data="old('check_out_time_until')"></x-times-list>
                     </select>
@@ -522,7 +521,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="allow_children" class="form-label label">Children (Do you allow children?)<span class="asterisk">*</span></label>
+                    <label for="allow_children" class="form-label label">Do you allow children?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="allow_children" name="allow_children" required>
                         <option value="">Select</option>
                         <option value="yes" {{ old('allow_children') == 'yes' ? "selected" : "" }}>Yes</option>
@@ -532,7 +531,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="allow_pets" class="form-label label">Pets (Do you allow pets?)<span class="asterisk">*</span></label>
+                    <label for="allow_pets" class="form-label label">Do you allow pets?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="allow_pets" name="allow_pets" required>
                         <option value="">Select</option>
                         <option value="yes" {{ old('allow_pets') == 'yes' ? "selected" : "" }}>Yes</option>
@@ -542,7 +541,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4 d-none allow-pets-charges">
-                    <label for="allow_pets_charges" class="form-label label">Pets Charges (Are there additional charges for pets?)<span class="asterisk">*</span></label>
+                    <label for="allow_pets_charges" class="form-label label">Are there additional charges for pets?<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="allow_pets_charges" name="allow_pets_charges" required>
                         <option value="">Select</option>
                         <option value="yes" {{ old('allow_pets_charges') == 'yes' ? "selected" : "" }}>Charges may apply</option>
@@ -552,12 +551,12 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-md-4">
-                    <x-upload-image-must old_name="old_thumbnail" old_value="{{ old('thumbnail') }}" new_name="new_thumbnail" path="stays" label="Thumbnail"></x-upload-image-must>
+                    <x-upload-image-must old_name="old_thumbnail" old_value="{{ old('thumbnail') }}" new_name="new_thumbnail" path="stays" label="thumbnail"></x-upload-image-must>
                     <x-input-error field="new_thumbnail"></x-input-error>
                 </div>
 
                 <div class="col-12 mb-3 mb-md-4">
-                    <x-upload-multi-images image_count="10" old_name="old_images" old_value="{{ old('images') }}" new_name="new_images[]" path="stays" label="Images"></x-upload-multi-images>
+                    <x-upload-multi-images image_count="10" old_name="old_images" old_value="{{ old('images') }}" new_name="new_images[]" path="stays" label="images"></x-upload-multi-images>
                     <x-input-error field="new_images.*"></x-input-error>
                 </div>
 

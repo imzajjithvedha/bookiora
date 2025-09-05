@@ -25,8 +25,8 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
-                    <label for="display_name" class="form-label label">Display Name</label>
-                    <input type="text" class="form-control input-field" id="display_name" name="display_name" placeholder="Display Name" value="{{ old('display_name') }}">
+                    <label for="display_name" class="form-label label">Display name</label>
+                    <input type="text" class="form-control input-field" id="display_name" name="display_name" placeholder="Display name" value="{{ old('display_name') }}">
                     <x-input-error field="display_name"></x-input-error>
                 </div>
 
@@ -53,7 +53,7 @@
                 <div class="col-12 col-md-4 mb-3 mb-md-4">
                     <label class="form-label label">Gender</label>
                     <select class="form-select input-field" id="gender" name="gender">
-                        <option value="">Select Gender</option>
+                        <option value="">Select gender</option>
                         <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
                         <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
                         <option value="nondisclosure" {{ old('gender') == 'nondisclosure' ? 'selected' : '' }}>Non Disclosure</option>
@@ -70,7 +70,7 @@
                 <div class="col-12 col-md-4 mb-3 mb-md-4">
                     <label class="form-label label">Role<span class="asterisk">*</span></label>
                     <select class="form-select input-field" id="role" name="role" required>
-                        <option value="">Select Role</option>
+                        <option value="">Select role</option>
                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                         <option value="partner" {{ old('role') == 'partner' ? 'selected' : '' }}>Partner</option>
                         <option value="explorer" {{ old('role') == 'explorer' ? 'selected' : '' }}>Explorer</option>
@@ -89,15 +89,15 @@
 
                 <div class="col-12 col-md-6 mb-3 mb-md-4">
                     <div class="position-relative">
-                        <label for="passwordConfirmation" class="form-label label">Confirm Password<span class="asterisk">*</span></label>
-                        <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="Confirm Password" required>
+                        <label for="passwordConfirmation" class="form-label label">Confirm password<span class="asterisk">*</span></label>
+                        <input type="password" class="form-control input-field" id="passwordConfirmation" name="password_confirmation" placeholder="Confirm password" required>
                         <span class="bi bi-eye-slash-fill toggle-password"></span>
                         <x-input-error field="password_confirmation"></x-input-error>
                     </div>
                 </div>
 
                 <div class="col-12 mb-3 mb-md-4">
-                    <x-upload-image old_name="old_image" old_value="{{ old('image') }}" new_name="new_image" path="users" label="Image"></x-upload-image>
+                    <x-upload-image old_name="old_image" old_value="{{ old('image') }}" new_name="new_image" path="users" label="image"></x-upload-image>
                     <x-input-error field="new_image"></x-input-error>
                 </div>
 

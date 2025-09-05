@@ -17,7 +17,7 @@ class VehicleRentalBookingController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('admin.bookings.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.bookings.edit', $item->id) .'" class="action-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a href="'. route('admin.users.company.index', $item->warehouse->user_id) .'" class="action-button" title="Company"><i class="bi bi-building"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 

@@ -1,18 +1,18 @@
 @extends('layouts.backend')
 
-@section('title', 'Stays')
+@section('title', 'Rooms')
 
 @section('content')
     <div class="page">
         <div class="row align-items-center mb-3 mb-md-4">
             <div class="col-12 mb-3 mb-md-0 col-md-8">
-                <p class="title raleway">Stays</p>
-                <p class="description">Manage stay details here.</p>
+                <p class="title raleway">{{ $stay->name }}: Rooms</p>
+                <p class="description">Manage room details here.</p>
             </div>
             <div class="col-12 col-md-4 text-end">
-                <a href="{{ route('admin.stays.create') }}" class="add-button">
+                <a href="{{ route('admin.stays.rooms.create', $stay) }}" class="add-button">
                     <i class="bi bi-plus-lg"></i>
-                    Add New Stay
+                    Add New Room
                 </a>
             </div>
         </div>
@@ -20,15 +20,19 @@
         <form class="filter-form mb-3 mb-md-4">
             <div class="row">
                 <div class="col-12 col-lg-3 mb-2 mb-lg-0">
-                    <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Name">
+                    <input type="text" class="form-control input-field raleway" name="custom_name" value="{{ $custom_name ?? '' }}" placeholder="Custom Name">
                 </div>
 
                 <div class="col-12 col-lg-3 mb-2 mb-lg-0">
-                    <input type="text" class="form-control input-field raleway" name="address" value="{{ $address ?? '' }}" placeholder="Address">
+                    <select class="form-select js-single input-field" id="name" name="name">
+                        <x-stay-room-names-list :data="$name ?? ''"></x-stay-room-names-list>
+                    </select>
                 </div>
 
                 <div class="col-12 col-lg-2 mb-2 mb-lg-0">
-                    <input type="text" class="form-control input-field raleway" name="city" value="{{ $city ?? '' }}" placeholder="City">
+                    <select class="form-select js-single input-field" id="type" name="type">
+                        <x-stay-room-types-list :data="$type ?? ''"></x-stay-room-types-list>
+                    </select>
                 </div>
 
                 <div class="col-12 col-lg-2 mb-2 mb-lg-0">
@@ -55,11 +59,11 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="raleway">THUMBNAIL</th>
+                                <th scope="col" class="raleway">CUSTOM NAME <i class="bi bi-arrows-vertical sort-icon" data-name="custom_name" data-order="desc"></i></th>
                                 <th scope="col" class="raleway">NAME <i class="bi bi-arrows-vertical sort-icon" data-name="name" data-order="desc"></i></th>
-                                <th scope="col" class="raleway">ADDRESS <i class="bi bi-arrows-vertical sort-icon" data-name="address" data-order="desc"></i></th>
-                                <th scope="col" class="raleway">CITY <i class="bi bi-arrows-vertical sort-icon" data-name="city" data-order="desc"></i></th>
-                                <th scope="col" class="raleway">POST CODE <i class="bi bi-arrows-vertical sort-icon" data-name="post_code" data-order="desc"></i></th>
-                                <th scope="col" class="raleway">COUNTRY <i class="bi bi-arrows-vertical sort-icon" data-name="country" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">TYPE <i class="bi bi-arrows-vertical sort-icon" data-name="type" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">NO OF GUESTS <i class="bi bi-arrows-vertical sort-icon" data-name="number_of_guests" data-order="desc"></i></th>
+                                <th scope="col" class="raleway">CHARGE PER NIGHT <i class="bi bi-arrows-vertical sort-icon" data-name="charge_per_night" data-order="desc"></i></th>
                                 <th scope="col" class="raleway">STATUS <i class="bi bi-arrows-vertical sort-icon" data-name="status" data-order="desc"></i></th>
                                 <th scope="col" class="raleway">ACTIONS</th>
                             </tr>
@@ -70,11 +74,11 @@
                                 @foreach($items as $item)
                                     <tr>
                                         <td>{!! $item->thumbnail !!}</td>
+                                        <td>{{ $item->custom_name }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->address }}</td>
-                                        <td>{{ $item->city }}</td>
-                                        <td>{{ $item->post_code }}</td>
-                                        <td>{{ $item->country }}</td>
+                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->number_of_guests }}</td>
+                                        <td>{{ $item->charge_per_night }}</td>
                                         <td>{!! $item->status !!}</td>
                                         <td>{!! $item->action !!}</td>
                                     </tr>
@@ -94,7 +98,7 @@
             </div>
         </div>
 
-        <x-delete-data data="stay"></x-delete>
+        <x-delete-data data="room"></x-delete>
     </div>
 @endsection
 
@@ -102,9 +106,9 @@
 @push('after-scripts')
     <script>
         window.moduleRoutes = {
-            destroyRoute: "{{ route('admin.stays.destroy', [':id']) }}",
-            filterRoute: "{{ route('admin.stays.filter') }}",
-            indexRoute: "{{ route('admin.stays.index') }}",
+            destroyRoute: "{{ route('admin.stays.rooms.destroy', [$stay->id, ':id']) }}",
+            filterRoute: "{{ route('admin.stays.rooms.filter', [$stay->id]) }}",
+            indexRoute: "{{ route('admin.stays.rooms.index', [$stay->id]) }}",
             pageUrl: "{!! $items->url(1) !!}"
         };
     </script>

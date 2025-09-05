@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\Stay\StayBookingController;
 use App\Http\Controllers\Admin\Stay\StayController;
+use App\Http\Controllers\Admin\Stay\StayRoomController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\SurfCamp\SurfCampBookingController;
@@ -79,6 +80,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('{stay}/edit', 'edit')->name('edit');
             Route::post('{stay}', 'update')->name('update');
             Route::delete('{stay}', 'destroy')->name('destroy');
+
+            Route::controller(StayRoomController::class)->prefix('rooms')->name('rooms.')->group(function() {
+                Route::get('{stay}', 'index')->name('index');
+                Route::get('{stay}/filter', 'filter')->name('filter');
+                Route::get('{stay}/create', 'create')->name('create');
+                Route::post('{stay}', 'store')->name('store');
+                Route::get('{stay}/{stay_room}/edit', 'edit')->name('edit');
+                Route::post('{stay}/{stay_room}', 'update')->name('update');
+                Route::delete('{stay}/{stay_room}', 'destroy')->name('destroy');
+            });
 
             Route::controller(StayBookingController::class)->prefix('bookings')->name('bookings.')->group(function() {
                 Route::get('/', 'index')->name('index');

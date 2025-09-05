@@ -14,11 +14,11 @@
         <form class="filter-form mb-3 mb-md-4">
             <div class="row">
                 <div class="col-12 col-lg-5 mb-2 mb-lg-0">
-                    <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Search by Name">
+                    <input type="text" class="form-control input-field raleway" name="name" value="{{ $name ?? '' }}" placeholder="Name">
                 </div>
 
                 <div class="col-12 col-lg-5 mb-2 mb-lg-0">
-                    <input type="text" class="form-control input-field raleway" name="email" value="{{ $email ?? '' }}" placeholder="Search by Email">
+                    <input type="text" class="form-control input-field raleway" name="email" value="{{ $email ?? '' }}" placeholder="Email">
                 </div>
 
                 <div class="col-12 col-lg-2">

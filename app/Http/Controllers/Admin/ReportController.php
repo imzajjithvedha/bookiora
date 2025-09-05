@@ -17,7 +17,7 @@ class ReportController extends Controller
     {
         foreach($items as $item) {
             $item->action = '
-            <a href="'. route('admin.reports.edit', $item->id) .'" class="action-button edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('admin.reports.edit', $item->id) .'" class="action-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$item->id.'" class="action-button delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $tenant_name = $item->user->first_name . ' ' . $item->user->last_name;
